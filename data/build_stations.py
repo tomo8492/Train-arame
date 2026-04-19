@@ -21,13 +21,16 @@ import sys
 from pathlib import Path
 
 
-def build(shp_path: Path, out_path: Path) -> None:
+def build(shp_path: Path, out_path: Path, encoding: str | None = None) -> None:
     try:
         import shapefile
     except ImportError:
         sys.exit("pyshp is required. Run: pip install pyshp")
 
-    reader = shapefile.Reader(str(shp_path), encoding="cp932")
+    if encoding is None:
+        encoding = "utf-8" if "UTF-8" in str(shp_path) else "cp932"
+
+    reader = shapefile.Reader(str(shp_path), encoding=encoding)
     fields = [f[0] for f in reader.fields[1:]]
 
     def field_index(name: str) -> int:
@@ -62,11 +65,13 @@ def build(shp_path: Path, out_path: Path) -> None:
         lon_sum = sum(p[0] for p in pts) / len(pts)
         lat_sum = sum(p[1] for p in pts) / len(pts)
 
+        display_line = f"{company} {line}".strip() if company else line
+
         stations.append({
             "id": f"{company}-{line}-{name}".replace(" ", ""),
             "name": name,
             "nameKana": None,
-            "lineName": line,
+            "lineName": display_line,
             "latitude": round(lat_sum, 6),
             "longitude": round(lon_sum, 6),
         })

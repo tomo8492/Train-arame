@@ -30,6 +30,12 @@ struct SettingsView: View {
                             .foregroundStyle(.secondary)
                     }
                 }
+
+                Section("データ出典") {
+                    Text("駅データ: 国土交通省「国土数値情報（鉄道データ N02）」")
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                }
             }
             .navigationTitle("設定")
         }

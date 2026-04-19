@@ -48,11 +48,19 @@ make project   # project.yml から WakeAtStation.xcodeproj を生成
 make open      # Xcode で開く
 ```
 
-### 初期バンドル駅データ
+### バンドル駅データ
 
-`ios/WakeAtStation/Resources/stations.json` に山手線・中央線・関西主要駅など
-約50駅がプリセット済み。本番用には `data/build_stations.py` で
-国土数理院 N02 データを全駅分に差し替える。
+**日本全国 約10,136駅 / 552路線** を `ios/WakeAtStation/Resources/stations.json`
+にバンドル済み（1.7MB）。JR 全社・大手私鉄・地下鉄・LRT を網羅。
+
+出典: 国土交通省「国土数値情報（鉄道データ）N02-24」。
+再生成は以下:
+
+```bash
+pip install pyshp
+python data/build_stations.py data/raw/UTF-8/N02-24_Station.shp \
+    -o ios/WakeAtStation/Resources/stations.json
+```
 
 ### 実機で動かす前に
 
