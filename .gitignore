@@ -1,0 +1,41 @@
+# Xcode
+build/
+DerivedData/
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+xcuserdata/
+*.xcuserstate
+*.xcscmblueprint
+*.xccheckout
+
+# Swift Package Manager
+.swiftpm/
+Packages/
+Package.resolved
+.build/
+
+# CocoaPods / Carthage (if used later)
+Pods/
+Carthage/Build/
+
+# macOS
+.DS_Store
+
+# Python (data tooling)
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# 大きめの駅データ中間ファイル
+data/raw/
+data/*.shp
+data/*.shx
+data/*.dbf
+
+# IDE
+.vscode/
+.idea/
+
+# Secrets
+*.env

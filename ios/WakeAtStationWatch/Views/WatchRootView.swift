@@ -1,0 +1,62 @@
+import SwiftUI
+
+struct WatchRootView: View {
+    @EnvironmentObject var receiver: WatchArrivalReceiver
+
+    var body: some View {
+        ZStack {
+            if receiver.isAlerting {
+                AlertingView()
+            } else {
+                IdleView()
+            }
+        }
+    }
+}
+
+private struct IdleView: View {
+    @EnvironmentObject var receiver: WatchArrivalReceiver
+
+    var body: some View {
+        VStack(spacing: 8) {
+            Image(systemName: "alarm.waves.left.and.right.fill")
+                .font(.largeTitle)
+                .foregroundStyle(.tint)
+            Text(receiver.currentStationName ?? "駅未設定")
+                .font(.headline)
+            if let line = receiver.currentLineName {
+                Text(line).font(.caption).foregroundStyle(.secondary)
+            }
+            Text("iPhoneで降車駅を設定してください")
+                .font(.caption2)
+                .foregroundStyle(.secondary)
+                .multilineTextAlignment(.center)
+        }
+        .padding()
+    }
+}
+
+private struct AlertingView: View {
+    @EnvironmentObject var receiver: WatchArrivalReceiver
+
+    var body: some View {
+        VStack(spacing: 12) {
+            Text("まもなく")
+                .font(.title3)
+            Text(receiver.currentStationName ?? "目的地")
+                .font(.title.bold())
+            if let line = receiver.currentLineName {
+                Text(line).font(.caption).foregroundStyle(.secondary)
+            }
+            Button {
+                receiver.acknowledge()
+            } label: {
+                Text("起きた！停止")
+                    .frame(maxWidth: .infinity)
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(.red)
+        }
+        .padding()
+    }
+}
