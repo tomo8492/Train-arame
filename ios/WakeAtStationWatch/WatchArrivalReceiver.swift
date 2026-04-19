@@ -5,9 +5,13 @@ import WatchKit
 @MainActor
 final class WatchArrivalReceiver: NSObject, ObservableObject {
     @Published var currentStationName: String?
-    @Published var currentLineName: String?
+    @Published var currentLines: [String] = []
     @Published var isAlerting: Bool = false
     @Published var currentStage: String?
+
+    var currentLinesSummary: String? {
+        currentLines.isEmpty ? nil : currentLines.joined(separator: " / ")
+    }
 
     private var hapticTimer: Timer?
     private var autoStopWorkItem: DispatchWorkItem?
@@ -54,7 +58,7 @@ final class WatchArrivalReceiver: NSObject, ObservableObject {
     private func handle(payload: [String: Any]) {
         guard let type = payload["type"] as? String, type == "arrival" else { return }
         currentStationName = payload["stationName"] as? String
-        currentLineName = payload["lineName"] as? String
+        currentLines = payload["lines"] as? [String] ?? []
         let stageRaw = payload["stage"] as? String ?? "arrival"
         currentStage = stageRaw
         startHaptics(isStrong: stageRaw == "arrival")

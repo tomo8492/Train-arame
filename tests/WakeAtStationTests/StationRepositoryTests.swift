@@ -16,12 +16,13 @@ final class StationRepositoryTests: XCTestCase {
         let repo = StationRepository()
         repo.overrideAll([
             Station(id: "a", name: "新宿", nameKana: "しんじゅく",
-                    lineName: "JR山手線", latitude: 35.69, longitude: 139.70),
+                    lines: ["JR山手線", "京王線"], latitude: 35.69, longitude: 139.70),
             Station(id: "b", name: "池袋", nameKana: "いけぶくろ",
-                    lineName: "JR山手線", latitude: 35.72, longitude: 139.71)
+                    lines: ["JR山手線"], latitude: 35.72, longitude: 139.71)
         ])
         XCTAssertEqual(repo.search("新宿").count, 1)
         XCTAssertEqual(repo.search("山手線").count, 2)
+        XCTAssertEqual(repo.search("京王線").count, 1)
         XCTAssertEqual(repo.search("").count, 0)
     }
 
@@ -29,7 +30,7 @@ final class StationRepositoryTests: XCTestCase {
         let repo = StationRepository()
         repo.overrideAll([
             Station(id: "a", name: "新宿", nameKana: "しんじゅく",
-                    lineName: "JR山手線", latitude: 35.69, longitude: 139.70)
+                    lines: ["JR山手線"], latitude: 35.69, longitude: 139.70)
         ])
         XCTAssertEqual(repo.search("しんじゅく").count, 1, "hiragana should match")
         XCTAssertEqual(repo.search("シンジュク").count, 1, "katakana should be normalized to hiragana")

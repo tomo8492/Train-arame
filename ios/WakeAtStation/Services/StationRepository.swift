@@ -31,7 +31,7 @@ final class StationRepository: ObservableObject {
         return all.filter { station in
             station.name.localizedCaseInsensitiveContains(q)
                 || (station.nameKana.map { $0.contains(qHira) } ?? false)
-                || station.lineName.localizedCaseInsensitiveContains(q)
+                || station.lines.contains { $0.localizedCaseInsensitiveContains(q) }
         }.prefix(limit).map { $0 }
     }
 

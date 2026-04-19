@@ -24,8 +24,8 @@ private struct IdleView: View {
                 .foregroundStyle(.tint)
             Text(receiver.currentStationName ?? "駅未設定")
                 .font(.headline)
-            if let line = receiver.currentLineName {
-                Text(line).font(.caption).foregroundStyle(.secondary)
+            if let line = receiver.currentLinesSummary {
+                Text(line).font(.caption).foregroundStyle(.secondary).lineLimit(2)
             }
             Text("iPhoneで降車駅を設定してください")
                 .font(.caption2)
@@ -48,8 +48,8 @@ private struct AlertingView: View {
                 .foregroundStyle(isPreAlert ? .secondary : .primary)
             Text(receiver.currentStationName ?? "目的地")
                 .font(.title.bold())
-            if let line = receiver.currentLineName {
-                Text(line).font(.caption).foregroundStyle(.secondary)
+            if let line = receiver.currentLinesSummary {
+                Text(line).font(.caption).foregroundStyle(.secondary).lineLimit(2)
             }
             Button {
                 receiver.acknowledge()

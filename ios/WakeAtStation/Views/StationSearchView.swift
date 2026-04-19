@@ -51,9 +51,10 @@ struct StationSearchView: View {
             HStack {
                 VStack(alignment: .leading) {
                     Text(station.name).font(.headline)
-                    Text(station.lineName)
+                    Text(station.linesSummary)
                         .font(.caption)
                         .foregroundStyle(.secondary)
+                        .lineLimit(2)
                 }
                 Spacer()
                 Button {

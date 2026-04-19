@@ -42,8 +42,10 @@ private struct ActiveAlarmCard: View {
         VStack(alignment: .leading, spacing: 6) {
             Text(alarm.station.name)
                 .font(.title2.bold())
-            Text(alarm.station.lineName)
+            Text(alarm.station.linesSummary)
+                .font(.caption)
                 .foregroundStyle(.secondary)
+                .lineLimit(2)
             if let distance = locationManager.distanceToMonitoredStation() {
                 Text("現在 \(Int(distance)) m")
                     .font(.footnote)
@@ -67,9 +69,10 @@ private struct AlarmRow: View {
         HStack {
             VStack(alignment: .leading) {
                 Text(alarm.station.name).font(.headline)
-                Text("\(alarm.station.lineName) ・ \(alarm.radius.label)")
+                Text("\(alarm.station.linesSummary) ・ \(alarm.radius.label)")
                     .font(.caption)
                     .foregroundStyle(.secondary)
+                    .lineLimit(1)
             }
             Spacer()
             Button("開始") {

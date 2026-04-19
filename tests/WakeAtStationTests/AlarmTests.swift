@@ -3,10 +3,10 @@ import XCTest
 
 final class AlarmTests: XCTestCase {
     private let tokyo = Station(
-        id: "jre-yamanote-tokyo",
+        id: "東京-35.6808-139.7665",
         name: "東京",
         nameKana: "とうきょう",
-        lineName: "JR山手線",
+        lines: ["JR山手線", "JR中央線"],
         latitude: 35.681236,
         longitude: 139.767125
     )

@@ -21,7 +21,7 @@ final class WatchBridge: NSObject, WCSessionDelegate {
             "type": "arrival",
             "stage": stage.rawValue,
             "stationName": alarm.station.name,
-            "lineName": alarm.station.lineName,
+            "lines": alarm.station.lines,
             "alarmId": alarm.id.uuidString
         ]
 

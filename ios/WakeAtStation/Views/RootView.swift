@@ -15,6 +15,7 @@ struct RootView: View {
         }
         .task {
             locationManager.requestAuthorization()
+            NotificationDelegate.shared.register(locationManager: locationManager)
             await NotificationScheduler.shared.requestAuthorization()
         }
     }
