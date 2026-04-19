@@ -39,10 +39,13 @@ private struct IdleView: View {
 private struct AlertingView: View {
     @EnvironmentObject var receiver: WatchArrivalReceiver
 
+    private var isPreAlert: Bool { receiver.currentStage == "preAlert" }
+
     var body: some View {
         VStack(spacing: 12) {
-            Text("まもなく")
+            Text(isPreAlert ? "もうすぐ（予告）" : "まもなく降車")
                 .font(.title3)
+                .foregroundStyle(isPreAlert ? .secondary : .primary)
             Text(receiver.currentStationName ?? "目的地")
                 .font(.title.bold())
             if let line = receiver.currentLineName {
@@ -51,11 +54,11 @@ private struct AlertingView: View {
             Button {
                 receiver.acknowledge()
             } label: {
-                Text("起きた！停止")
+                Text(isPreAlert ? "了解" : "起きた！停止")
                     .frame(maxWidth: .infinity)
             }
             .buttonStyle(.borderedProminent)
-            .tint(.red)
+            .tint(isPreAlert ? .orange : .red)
         }
         .padding()
     }

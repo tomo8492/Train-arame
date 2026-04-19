@@ -5,10 +5,11 @@ struct StationSearchView: View {
     @EnvironmentObject var alarmStore: AlarmStore
     @State private var query: String = ""
     @State private var radius: AlarmRadius = .medium
+    @State private var twoStage: Bool = true
 
     var body: some View {
         NavigationStack {
-            VStack {
+            VStack(spacing: 8) {
                 Picker("通知距離", selection: $radius) {
                     ForEach(AlarmRadius.allCases) { r in
                         Text(r.label).tag(r)
@@ -17,15 +18,22 @@ struct StationSearchView: View {
                 .pickerStyle(.segmented)
                 .padding(.horizontal)
 
-                List(results) { station in
-                    Button {
-                        alarmStore.add(Alarm(station: station, radius: radius))
-                    } label: {
-                        VStack(alignment: .leading) {
-                            Text(station.name).font(.headline)
-                            Text(station.lineName)
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
+                Toggle("2駅前で予告通知（弱バイブ）", isOn: $twoStage)
+                    .padding(.horizontal)
+
+                List {
+                    if query.isEmpty && !alarmStore.favorites.isEmpty {
+                        Section("お気に入り") {
+                            ForEach(alarmStore.favorites) { station in
+                                row(for: station)
+                            }
+                        }
+                    }
+                    if !query.isEmpty {
+                        Section("検索結果") {
+                            ForEach(repository.search(query)) { station in
+                                row(for: station)
+                            }
                         }
                     }
                 }
@@ -35,7 +43,26 @@ struct StationSearchView: View {
         }
     }
 
-    private var results: [Station] {
-        query.isEmpty ? alarmStore.favorites : repository.search(query)
+    private func row(for station: Station) -> some View {
+        Button {
+            let alarm = Alarm(station: station, radius: radius, enableTwoStage: twoStage)
+            alarmStore.add(alarm)
+        } label: {
+            HStack {
+                VStack(alignment: .leading) {
+                    Text(station.name).font(.headline)
+                    Text(station.lineName)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+                Spacer()
+                Button {
+                    alarmStore.toggleFavorite(station)
+                } label: {
+                    Image(systemName: alarmStore.favorites.contains(station) ? "star.fill" : "star")
+                }
+                .buttonStyle(.borderless)
+            }
+        }
     }
 }

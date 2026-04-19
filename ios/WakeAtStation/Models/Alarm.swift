@@ -15,18 +15,42 @@ enum AlarmRadius: Int, Codable, CaseIterable, Identifiable {
     }
 }
 
+enum AlarmStage: String, Codable {
+    case preAlert
+    case arrival
+
+    var title: String {
+        switch self {
+        case .preAlert: return "まもなく降車駅（予告）"
+        case .arrival: return "起きて！目的地です"
+        }
+    }
+}
+
 struct Alarm: Codable, Identifiable, Hashable {
     let id: UUID
     var station: Station
     var radius: AlarmRadius
     var isArmed: Bool
+    var enableTwoStage: Bool
     var createdAt: Date
 
-    init(station: Station, radius: AlarmRadius = .medium, isArmed: Bool = true) {
+    init(station: Station,
+         radius: AlarmRadius = .medium,
+         isArmed: Bool = true,
+         enableTwoStage: Bool = true) {
         self.id = UUID()
         self.station = station
         self.radius = radius
         self.isArmed = isArmed
+        self.enableTwoStage = enableTwoStage
         self.createdAt = Date()
+    }
+
+    var innerRadiusMeters: Double { Double(radius.rawValue) }
+    var outerRadiusMeters: Double { Double(radius.rawValue) * 2 }
+
+    func regionIdentifier(for stage: AlarmStage) -> String {
+        "\(id.uuidString)-\(stage.rawValue)"
     }
 }

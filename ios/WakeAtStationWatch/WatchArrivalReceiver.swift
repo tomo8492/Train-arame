@@ -7,8 +7,10 @@ final class WatchArrivalReceiver: NSObject, ObservableObject {
     @Published var currentStationName: String?
     @Published var currentLineName: String?
     @Published var isAlerting: Bool = false
+    @Published var currentStage: String?
 
     private var hapticTimer: Timer?
+    private var autoStopWorkItem: DispatchWorkItem?
 
     override init() {
         super.init()
@@ -20,32 +22,42 @@ final class WatchArrivalReceiver: NSObject, ObservableObject {
 
     func acknowledge() {
         isAlerting = false
+        currentStage = nil
         hapticTimer?.invalidate()
         hapticTimer = nil
+        autoStopWorkItem?.cancel()
+        autoStopWorkItem = nil
     }
 
-    private func startStrongHaptics() {
-        guard !isAlerting else { return }
+    private func startHaptics(isStrong: Bool) {
+        hapticTimer?.invalidate()
+        autoStopWorkItem?.cancel()
         isAlerting = true
-        WKInterfaceDevice.current().play(.notification)
-        hapticTimer = Timer.scheduledTimer(withTimeInterval: 0.8, repeats: true) { _ in
+        WKInterfaceDevice.current().play(isStrong ? .notification : .directionUp)
+
+        let interval: TimeInterval = isStrong ? 0.8 : 2.0
+        let type: WKHapticType = isStrong ? .failure : .click
+        hapticTimer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { _ in
             Task { @MainActor in
-                WKInterfaceDevice.current().play(.failure)
+                WKInterfaceDevice.current().play(type)
             }
         }
-        // Auto-stop after 2 minutes if user never acknowledges (safety guard)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 120) { [weak self] in
-            Task { @MainActor in
-                self?.acknowledge()
-            }
+
+        let timeout: TimeInterval = isStrong ? 120 : 15
+        let work = DispatchWorkItem { [weak self] in
+            Task { @MainActor in self?.acknowledge() }
         }
+        autoStopWorkItem = work
+        DispatchQueue.main.asyncAfter(deadline: .now() + timeout, execute: work)
     }
 
     private func handle(payload: [String: Any]) {
         guard let type = payload["type"] as? String, type == "arrival" else { return }
         currentStationName = payload["stationName"] as? String
         currentLineName = payload["lineName"] as? String
-        startStrongHaptics()
+        let stageRaw = payload["stage"] as? String ?? "arrival"
+        currentStage = stageRaw
+        startHaptics(isStrong: stageRaw == "arrival")
     }
 }
 

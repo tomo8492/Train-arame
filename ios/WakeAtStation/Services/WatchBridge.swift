@@ -12,13 +12,14 @@ final class WatchBridge: NSObject, WCSessionDelegate {
         }
     }
 
-    func sendArrival(alarm: Alarm) {
+    func sendArrival(alarm: Alarm, stage: AlarmStage) {
         guard WCSession.isSupported() else { return }
         let session = WCSession.default
         guard session.activationState == .activated else { return }
 
         let payload: [String: Any] = [
             "type": "arrival",
+            "stage": stage.rawValue,
             "stationName": alarm.station.name,
             "lineName": alarm.station.lineName,
             "alarmId": alarm.id.uuidString

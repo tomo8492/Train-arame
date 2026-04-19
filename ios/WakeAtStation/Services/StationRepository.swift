@@ -20,6 +20,10 @@ final class StationRepository: ObservableObject {
         }
     }
 
+    func overrideAll(_ stations: [Station]) {
+        all = stations
+    }
+
     func search(_ query: String, limit: Int = 30) -> [Station] {
         let q = query.trimmingCharacters(in: .whitespaces)
         guard !q.isEmpty else { return [] }

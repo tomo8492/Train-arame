@@ -7,6 +7,7 @@ final class LocationManager: NSObject, ObservableObject {
     @Published var authorizationStatus: CLAuthorizationStatus = .notDetermined
     @Published var currentLocation: CLLocation?
     @Published var monitoredAlarm: Alarm?
+    @Published var firedStages: Set<AlarmStage> = []
 
     private let manager = CLLocationManager()
 
@@ -29,29 +30,40 @@ final class LocationManager: NSObject, ObservableObject {
     }
 
     func startMonitoring(_ alarm: Alarm) {
+        stopMonitoring()
         monitoredAlarm = alarm
-        manager.startMonitoringSignificantLocationChanges()
+        firedStages.removeAll()
+
         manager.startUpdatingLocation()
 
-        let region = CLCircularRegion(
+        let inner = CLCircularRegion(
             center: alarm.station.coordinate,
-            radius: CLLocationDistance(alarm.radius.rawValue),
-            identifier: alarm.id.uuidString
+            radius: alarm.innerRadiusMeters,
+            identifier: alarm.regionIdentifier(for: .arrival)
         )
-        region.notifyOnEntry = true
-        region.notifyOnExit = false
-        manager.startMonitoring(for: region)
+        inner.notifyOnEntry = true
+        inner.notifyOnExit = false
+        manager.startMonitoring(for: inner)
+
+        if alarm.enableTwoStage {
+            let outer = CLCircularRegion(
+                center: alarm.station.coordinate,
+                radius: alarm.outerRadiusMeters,
+                identifier: alarm.regionIdentifier(for: .preAlert)
+            )
+            outer.notifyOnEntry = true
+            outer.notifyOnExit = false
+            manager.startMonitoring(for: outer)
+        }
     }
 
     func stopMonitoring() {
-        if let alarm = monitoredAlarm {
-            for region in manager.monitoredRegions where region.identifier == alarm.id.uuidString {
-                manager.stopMonitoring(for: region)
-            }
+        for region in manager.monitoredRegions {
+            manager.stopMonitoring(for: region)
         }
-        manager.stopMonitoringSignificantLocationChanges()
         manager.stopUpdatingLocation()
         monitoredAlarm = nil
+        firedStages.removeAll()
     }
 
     func distanceToMonitoredStation() -> CLLocationDistance? {
@@ -59,12 +71,29 @@ final class LocationManager: NSObject, ObservableObject {
         let target = CLLocation(latitude: alarm.station.latitude, longitude: alarm.station.longitude)
         return current.distance(from: target)
     }
+
+    fileprivate func handleRegionEntry(identifier: String) {
+        guard let alarm = monitoredAlarm else { return }
+        let stage: AlarmStage
+        if identifier == alarm.regionIdentifier(for: .arrival) {
+            stage = .arrival
+        } else if identifier == alarm.regionIdentifier(for: .preAlert) {
+            stage = .preAlert
+        } else {
+            return
+        }
+
+        guard !firedStages.contains(stage) else { return }
+        firedStages.insert(stage)
+        NotificationScheduler.shared.fire(alarm: alarm, stage: stage)
+    }
 }
 
 extension LocationManager: CLLocationManagerDelegate {
     nonisolated func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        let status = manager.authorizationStatus
         Task { @MainActor in
-            self.authorizationStatus = manager.authorizationStatus
+            self.authorizationStatus = status
         }
     }
 
@@ -76,9 +105,9 @@ extension LocationManager: CLLocationManagerDelegate {
     }
 
     nonisolated func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        let identifier = region.identifier
         Task { @MainActor in
-            guard let alarm = self.monitoredAlarm, region.identifier == alarm.id.uuidString else { return }
-            NotificationScheduler.shared.fireArrivalAlert(for: alarm)
+            self.handleRegionEntry(identifier: identifier)
         }
     }
 
