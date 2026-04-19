@@ -21,6 +21,19 @@ import sys
 from pathlib import Path
 
 
+def _build_kana_converter():
+    try:
+        import pykakasi
+    except ImportError:
+        return None
+    k = pykakasi.kakasi()
+
+    def to_hira(text: str) -> str:
+        return "".join(item["hira"] for item in k.convert(text))
+
+    return to_hira
+
+
 def build(shp_path: Path, out_path: Path, encoding: str | None = None) -> None:
     try:
         import shapefile
@@ -29,6 +42,11 @@ def build(shp_path: Path, out_path: Path, encoding: str | None = None) -> None:
 
     if encoding is None:
         encoding = "utf-8" if "UTF-8" in str(shp_path) else "cp932"
+
+    to_hira = _build_kana_converter()
+    if to_hira is None:
+        print("warning: pykakasi not installed; nameKana will be null. "
+              "Run: pip install pykakasi")
 
     reader = shapefile.Reader(str(shp_path), encoding=encoding)
     fields = [f[0] for f in reader.fields[1:]]
@@ -66,11 +84,12 @@ def build(shp_path: Path, out_path: Path, encoding: str | None = None) -> None:
         lat_sum = sum(p[1] for p in pts) / len(pts)
 
         display_line = f"{company} {line}".strip() if company else line
+        name_kana = to_hira(name) if to_hira else None
 
         stations.append({
             "id": f"{company}-{line}-{name}".replace(" ", ""),
             "name": name,
-            "nameKana": None,
+            "nameKana": name_kana,
             "lineName": display_line,
             "latitude": round(lat_sum, 6),
             "longitude": round(lon_sum, 6),

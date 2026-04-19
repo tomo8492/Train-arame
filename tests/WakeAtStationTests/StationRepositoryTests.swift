@@ -24,4 +24,19 @@ final class StationRepositoryTests: XCTestCase {
         XCTAssertEqual(repo.search("山手線").count, 2)
         XCTAssertEqual(repo.search("").count, 0)
     }
+
+    func test_search_matchesByHiraganaAndKatakana() {
+        let repo = StationRepository()
+        repo.overrideAll([
+            Station(id: "a", name: "新宿", nameKana: "しんじゅく",
+                    lineName: "JR山手線", latitude: 35.69, longitude: 139.70)
+        ])
+        XCTAssertEqual(repo.search("しんじゅく").count, 1, "hiragana should match")
+        XCTAssertEqual(repo.search("シンジュク").count, 1, "katakana should be normalized to hiragana")
+    }
+
+    func test_toHiragana_normalizesKatakana() {
+        XCTAssertEqual(StationRepository.toHiragana("シンジュク"), "しんじゅく")
+        XCTAssertEqual(StationRepository.toHiragana("しんじゅく"), "しんじゅく")
+    }
 }
