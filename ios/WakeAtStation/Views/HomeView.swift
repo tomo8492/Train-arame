@@ -3,6 +3,7 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject var locationManager: LocationManager
     @EnvironmentObject var alarmStore: AlarmStore
+    @EnvironmentObject var deepLinkRouter: DeepLinkRouter
     @State private var selectedStation: Station?
 
     var body: some View {
@@ -46,6 +47,10 @@ struct HomeView: View {
             .navigationTitle("駅ウェイク")
             .sheet(item: $selectedStation) { station in
                 StationDetailSheet(station: station)
+            }
+            .onReceive(deepLinkRouter.$pendingStation.compactMap { $0 }) { station in
+                selectedStation = station
+                deepLinkRouter.pendingStation = nil
             }
         }
     }

@@ -27,6 +27,7 @@ targets:
           - "Resources/Info.plist"
     resources:
       - path: ios/WakeAtStation/Resources/stations.json
+      - path: ios/WakeAtStation/Resources/PrivacyInfo.xcprivacy
       - path: ios/WakeAtStation/Resources/Assets.xcassets
     info:
       path: ios/WakeAtStation/Resources/Info.plist
@@ -51,6 +52,7 @@ targets:
           - "Resources/Info.plist"
       - path: ios/Shared/SharedState.swift
     resources:
+      - path: ios/WakeAtStationWatch/Resources/PrivacyInfo.xcprivacy
       - path: ios/WakeAtStationWatch/Resources/Assets.xcassets
     info:
       path: ios/WakeAtStationWatch/Resources/Info.plist

@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct StationSearchView: View {
-    @StateObject private var repository = StationRepository()
+    @EnvironmentObject var repository: StationRepository
     @EnvironmentObject var alarmStore: AlarmStore
     @State private var query: String = ""
     @State private var selectedStation: Station?

@@ -51,5 +51,18 @@
     <string>降車駅への接近を検知するために位置情報を使用します。</string>
     <key>WKCompanionAppBundleIdentifier</key>
     <string>com.tomo.wakeatstation.watchkitapp</string>
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleTypeRole</key>
+            <string>Viewer</string>
+            <key>CFBundleURLName</key>
+            <string>com.tomo.wakeatstation.deeplink</string>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>wakestation</string>
+            </array>
+        </dict>
+    </array>
 </dict>
 </plist>
