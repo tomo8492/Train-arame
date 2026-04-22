@@ -5,9 +5,12 @@ struct StationDetailSheet: View {
     @EnvironmentObject var locationManager: LocationManager
     @EnvironmentObject var alarmStore: AlarmStore
     @Environment(\.dismiss) private var dismiss
+    @AppStorage("defaultRadius") private var defaultRadiusRaw: Int = AlarmRadius.medium.rawValue
+    @AppStorage("defaultTwoStage") private var defaultTwoStage: Bool = true
 
     @State private var radius: AlarmRadius = .medium
     @State private var twoStage: Bool = true
+    @State private var hasAppliedDefaults: Bool = false
 
     var body: some View {
         NavigationStack {
@@ -48,6 +51,12 @@ struct StationDetailSheet: View {
             }
             .navigationTitle("目的地")
             .navigationBarTitleDisplayMode(.inline)
+            .onAppear {
+                guard !hasAppliedDefaults else { return }
+                radius = AlarmRadius(rawValue: defaultRadiusRaw) ?? .medium
+                twoStage = defaultTwoStage
+                hasAppliedDefaults = true
+            }
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button("閉じる") { dismiss() }

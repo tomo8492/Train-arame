@@ -14,10 +14,11 @@ final class LocationManager: NSObject, ObservableObject {
     override init() {
         super.init()
         manager.delegate = self
-        manager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        manager.activityType = .automotiveNavigation
         manager.allowsBackgroundLocationUpdates = true
         manager.pausesLocationUpdatesAutomatically = false
         manager.showsBackgroundLocationIndicator = true
+        applyAccuracy(for: nil)
         authorizationStatus = manager.authorizationStatus
     }
 
@@ -77,6 +78,26 @@ final class LocationManager: NSObject, ObservableObject {
         return current.distance(from: target)
     }
 
+    /// 目的地までの距離に応じて精度とフィルタを切り替え、バッテリーを最適化する。
+    /// 遠いときはざっくり、近づくと精密に。
+    private func applyAccuracy(for distance: CLLocationDistance?) {
+        guard let distance = distance else {
+            manager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+            manager.distanceFilter = 200
+            return
+        }
+        if distance > 5_000 {
+            manager.desiredAccuracy = kCLLocationAccuracyKilometer
+            manager.distanceFilter = 500
+        } else if distance > 1_500 {
+            manager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+            manager.distanceFilter = 100
+        } else {
+            manager.desiredAccuracy = kCLLocationAccuracyBest
+            manager.distanceFilter = 30
+        }
+    }
+
     fileprivate func handleRegionEntry(identifier: String) {
         guard let alarm = monitoredAlarm else { return }
         let stage: AlarmStage
@@ -106,6 +127,7 @@ extension LocationManager: CLLocationManagerDelegate {
         guard let latest = locations.last else { return }
         Task { @MainActor in
             self.currentLocation = latest
+            self.applyAccuracy(for: self.distanceToMonitoredStation())
         }
     }
 
