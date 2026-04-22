@@ -40,4 +40,16 @@ final class StationRepositoryTests: XCTestCase {
         XCTAssertEqual(StationRepository.toHiragana("シンジュク"), "しんじゅく")
         XCTAssertEqual(StationRepository.toHiragana("しんじゅく"), "しんじゅく")
     }
+
+    func test_search_ranksByLinesCountThenExactMatch() {
+        let repo = StationRepository()
+        let many = Station(id: "a", name: "東京", nameKana: "とうきょう",
+                           lines: ["JR山手線", "JR中央線", "JR東海道線", "丸ノ内線"],
+                           latitude: 35.68, longitude: 139.76)
+        let few = Station(id: "b", name: "東京貨物ターミナル", nameKana: "とうきょうかもつたーみなる",
+                          lines: ["JR貨物線"], latitude: 35.60, longitude: 139.76)
+        repo.overrideAll([few, many])
+        let results = repo.search("東京")
+        XCTAssertEqual(results.first, many, "多路線の駅が上位に来る")
+    }
 }

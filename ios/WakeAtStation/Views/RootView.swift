@@ -3,6 +3,7 @@ import SwiftUI
 struct RootView: View {
     @EnvironmentObject var locationManager: LocationManager
     @EnvironmentObject var alarmStore: AlarmStore
+    @AppStorage("hasSeenOnboarding") private var hasSeenOnboarding: Bool = false
 
     var body: some View {
         TabView {
@@ -14,9 +15,12 @@ struct RootView: View {
                 .tabItem { Label("設定", systemImage: "gearshape") }
         }
         .task {
-            locationManager.requestAuthorization()
             NotificationDelegate.shared.register(locationManager: locationManager)
             await NotificationScheduler.shared.requestAuthorization()
+        }
+        .sheet(isPresented: .constant(!hasSeenOnboarding)) {
+            OnboardingView()
+                .onDisappear { hasSeenOnboarding = true }
         }
     }
 }

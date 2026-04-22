@@ -2,24 +2,15 @@ import Foundation
 
 @MainActor
 final class AlarmStore: ObservableObject {
-    @Published var alarms: [Alarm] = []
     @Published var favorites: [Station] = []
+    @Published var recents: [Station] = []
 
-    private let alarmsKey = "alarms.v1"
-    private let favoritesKey = "favorites.v1"
+    private let favoritesKey = "favorites.v2"
+    private let recentsKey = "recents.v1"
+    private let recentsLimit = 10
 
     init() {
         load()
-    }
-
-    func add(_ alarm: Alarm) {
-        alarms.append(alarm)
-        save()
-    }
-
-    func remove(_ alarm: Alarm) {
-        alarms.removeAll { $0.id == alarm.id }
-        save()
     }
 
     func toggleFavorite(_ station: Station) {
@@ -31,25 +22,43 @@ final class AlarmStore: ObservableObject {
         save()
     }
 
+    func isFavorite(_ station: Station) -> Bool {
+        favorites.contains(station)
+    }
+
+    func pushRecent(_ station: Station) {
+        recents.removeAll { $0 == station }
+        recents.insert(station, at: 0)
+        if recents.count > recentsLimit {
+            recents = Array(recents.prefix(recentsLimit))
+        }
+        save()
+    }
+
+    func clearRecents() {
+        recents.removeAll()
+        save()
+    }
+
     private func load() {
         let decoder = JSONDecoder()
-        if let data = UserDefaults.standard.data(forKey: alarmsKey),
-           let decoded = try? decoder.decode([Alarm].self, from: data) {
-            alarms = decoded
-        }
         if let data = UserDefaults.standard.data(forKey: favoritesKey),
            let decoded = try? decoder.decode([Station].self, from: data) {
             favorites = decoded
+        }
+        if let data = UserDefaults.standard.data(forKey: recentsKey),
+           let decoded = try? decoder.decode([Station].self, from: data) {
+            recents = decoded
         }
     }
 
     private func save() {
         let encoder = JSONEncoder()
-        if let data = try? encoder.encode(alarms) {
-            UserDefaults.standard.set(data, forKey: alarmsKey)
-        }
         if let data = try? encoder.encode(favorites) {
             UserDefaults.standard.set(data, forKey: favoritesKey)
+        }
+        if let data = try? encoder.encode(recents) {
+            UserDefaults.standard.set(data, forKey: recentsKey)
         }
     }
 }

@@ -28,10 +28,17 @@ final class StationRepository: ObservableObject {
         let q = query.trimmingCharacters(in: .whitespaces)
         guard !q.isEmpty else { return [] }
         let qHira = Self.toHiragana(q)
-        return all.filter { station in
+        let matched = all.filter { station in
             station.name.localizedCaseInsensitiveContains(q)
                 || (station.nameKana.map { $0.contains(qHira) } ?? false)
                 || station.lines.contains { $0.localizedCaseInsensitiveContains(q) }
+        }
+        return matched.sorted { lhs, rhs in
+            let lhsExact = lhs.name == q || lhs.nameKana == qHira
+            let rhsExact = rhs.name == q || rhs.nameKana == qHira
+            if lhsExact != rhsExact { return lhsExact }
+            if lhs.lines.count != rhs.lines.count { return lhs.lines.count > rhs.lines.count }
+            return lhs.name < rhs.name
         }.prefix(limit).map { $0 }
     }
 

@@ -4,65 +4,70 @@ struct StationSearchView: View {
     @StateObject private var repository = StationRepository()
     @EnvironmentObject var alarmStore: AlarmStore
     @State private var query: String = ""
-    @State private var radius: AlarmRadius = .medium
-    @State private var twoStage: Bool = true
+    @State private var selectedStation: Station?
 
     var body: some View {
         NavigationStack {
-            VStack(spacing: 8) {
-                Picker("通知距離", selection: $radius) {
-                    ForEach(AlarmRadius.allCases) { r in
-                        Text(r.label).tag(r)
-                    }
-                }
-                .pickerStyle(.segmented)
-                .padding(.horizontal)
-
-                Toggle("2駅前で予告通知（弱バイブ）", isOn: $twoStage)
-                    .padding(.horizontal)
-
-                List {
-                    if query.isEmpty && !alarmStore.favorites.isEmpty {
+            List {
+                if query.isEmpty {
+                    if !alarmStore.favorites.isEmpty {
                         Section("お気に入り") {
                             ForEach(alarmStore.favorites) { station in
                                 row(for: station)
                             }
                         }
                     }
-                    if !query.isEmpty {
-                        Section("検索結果") {
-                            ForEach(repository.search(query)) { station in
+                    if !alarmStore.recents.isEmpty {
+                        Section("最近使った駅") {
+                            ForEach(alarmStore.recents) { station in
+                                row(for: station)
+                            }
+                        }
+                    }
+                    if alarmStore.favorites.isEmpty && alarmStore.recents.isEmpty {
+                        Section {
+                            Text("駅名・かな・路線名で検索できます\n例: 新宿 / しんじゅく / 山手線")
+                                .font(.callout)
+                                .foregroundStyle(.secondary)
+                                .multilineTextAlignment(.leading)
+                                .padding(.vertical, 8)
+                        }
+                    }
+                } else {
+                    let results = repository.search(query)
+                    if results.isEmpty {
+                        Section {
+                            Text("該当する駅が見つかりません")
+                                .foregroundStyle(.secondary)
+                        }
+                    } else {
+                        Section("検索結果 \(results.count)件") {
+                            ForEach(results) { station in
                                 row(for: station)
                             }
                         }
                     }
                 }
             }
-            .searchable(text: $query, prompt: "駅名・路線名")
-            .navigationTitle("駅を選ぶ")
+            .searchable(text: $query, prompt: "駅名・かな・路線名")
+            .autocorrectionDisabled()
+            .navigationTitle("駅を検索")
+            .sheet(item: $selectedStation) { station in
+                StationDetailSheet(station: station)
+            }
         }
     }
 
     private func row(for station: Station) -> some View {
         Button {
-            let alarm = Alarm(station: station, radius: radius, enableTwoStage: twoStage)
-            alarmStore.add(alarm)
+            selectedStation = station
         } label: {
-            HStack {
-                VStack(alignment: .leading) {
-                    Text(station.name).font(.headline)
-                    Text(station.linesSummary)
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                        .lineLimit(2)
-                }
-                Spacer()
-                Button {
-                    alarmStore.toggleFavorite(station)
-                } label: {
-                    Image(systemName: alarmStore.favorites.contains(station) ? "star.fill" : "star")
-                }
-                .buttonStyle(.borderless)
+            VStack(alignment: .leading, spacing: 2) {
+                Text(station.name).font(.headline).foregroundStyle(.primary)
+                Text(station.linesSummary)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .lineLimit(2)
             }
         }
     }
