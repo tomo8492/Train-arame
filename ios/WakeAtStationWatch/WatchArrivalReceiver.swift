@@ -1,6 +1,7 @@
 import Foundation
 import WatchConnectivity
 import WatchKit
+import WidgetKit
 
 @MainActor
 final class WatchArrivalReceiver: NSObject, ObservableObject {
@@ -22,6 +23,9 @@ final class WatchArrivalReceiver: NSObject, ObservableObject {
             WCSession.default.delegate = self
             WCSession.default.activate()
         }
+        let state = SharedAppGroup.load()
+        currentStationName = state.stationName
+        currentLines = state.lines
     }
 
     func acknowledge() {
@@ -55,13 +59,36 @@ final class WatchArrivalReceiver: NSObject, ObservableObject {
         DispatchQueue.main.asyncAfter(deadline: .now() + timeout, execute: work)
     }
 
-    private func handle(payload: [String: Any]) {
-        guard let type = payload["type"] as? String, type == "arrival" else { return }
+    private func handleArrival(payload: [String: Any]) {
         currentStationName = payload["stationName"] as? String
         currentLines = payload["lines"] as? [String] ?? []
         let stageRaw = payload["stage"] as? String ?? "arrival"
         currentStage = stageRaw
         startHaptics(isStrong: stageRaw == "arrival")
+    }
+
+    private func handleState(payload: [String: Any]) {
+        let cleared = payload["cleared"] as? Bool ?? false
+        if cleared {
+            SharedAppGroup.save(.empty)
+            currentStationName = nil
+            currentLines = []
+        } else if let name = payload["stationName"] as? String {
+            let lines = payload["lines"] as? [String] ?? []
+            SharedAppGroup.save(AlarmSharedState(
+                stationName: name, lines: lines, isMonitoring: true))
+            currentStationName = name
+            currentLines = lines
+        }
+        WidgetCenter.shared.reloadAllTimelines()
+    }
+
+    private func handle(payload: [String: Any]) {
+        switch payload["type"] as? String {
+        case "arrival": handleArrival(payload: payload)
+        case "state": handleState(payload: payload)
+        default: break
+        }
     }
 }
 

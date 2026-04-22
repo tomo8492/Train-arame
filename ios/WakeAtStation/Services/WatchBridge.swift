@@ -12,6 +12,22 @@ final class WatchBridge: NSObject, WCSessionDelegate {
         }
     }
 
+    func updateActiveAlarm(_ alarm: Alarm?) {
+        guard WCSession.isSupported() else { return }
+        let session = WCSession.default
+        guard session.activationState == .activated else { return }
+
+        var payload: [String: Any] = ["type": "state"]
+        if let alarm = alarm {
+            payload["stationName"] = alarm.station.name
+            payload["lines"] = alarm.station.lines
+            payload["alarmId"] = alarm.id.uuidString
+        } else {
+            payload["cleared"] = true
+        }
+        try? session.updateApplicationContext(payload)
+    }
+
     func sendArrival(alarm: Alarm, stage: AlarmStage) {
         guard WCSession.isSupported() else { return }
         let session = WCSession.default

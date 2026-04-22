@@ -49,10 +49,13 @@ targets:
       - path: ios/WakeAtStationWatch
         excludes:
           - "Resources/Info.plist"
+      - path: ios/Shared/SharedState.swift
     resources:
       - path: ios/WakeAtStationWatch/Resources/Assets.xcassets
     info:
       path: ios/WakeAtStationWatch/Resources/Info.plist
+    entitlements:
+      path: ios/WakeAtStationWatch/WakeAtStationWatch.entitlements
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.tomo.wakeatstation.watchkitapp
@@ -60,6 +63,28 @@ targets:
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
         TARGETED_DEVICE_FAMILY: "4"
         WATCHOS_DEPLOYMENT_TARGET: "10.0"
+    dependencies:
+      - target: WakeAtStationComplication
+        embed: true
+
+  WakeAtStationComplication:
+    type: app-extension
+    platform: watchOS
+    sources:
+      - path: ios/WakeAtStationComplication
+        excludes:
+          - "Info.plist"
+      - path: ios/Shared/SharedState.swift
+    info:
+      path: ios/WakeAtStationComplication/Info.plist
+    entitlements:
+      path: ios/WakeAtStationComplication/WakeAtStationComplication.entitlements
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.tomo.wakeatstation.watchkitapp.complication
+        WATCHOS_DEPLOYMENT_TARGET: "10.0"
+        INFOPLIST_KEY_NSExtensionPointIdentifier: com.apple.widgetkit-extension
+        SKIP_INSTALL: YES
 
   WakeAtStationTests:
     type: bundle.unit-test

@@ -34,6 +34,7 @@ final class LocationManager: NSObject, ObservableObject {
         monitoredAlarm = alarm
         firedStages.removeAll()
 
+        WatchBridge.shared.updateActiveAlarm(alarm)
         manager.startUpdatingLocation()
 
         let inner = CLCircularRegion(
@@ -58,12 +59,16 @@ final class LocationManager: NSObject, ObservableObject {
     }
 
     func stopMonitoring() {
+        if let alarm = monitoredAlarm {
+            NotificationScheduler.shared.cancelPending(for: alarm)
+        }
         for region in manager.monitoredRegions {
             manager.stopMonitoring(for: region)
         }
         manager.stopUpdatingLocation()
         monitoredAlarm = nil
         firedStages.removeAll()
+        WatchBridge.shared.updateActiveAlarm(nil)
     }
 
     func distanceToMonitoredStation() -> CLLocationDistance? {
