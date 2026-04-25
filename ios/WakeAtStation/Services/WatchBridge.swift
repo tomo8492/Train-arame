@@ -28,7 +28,8 @@ final class WatchBridge: NSObject, WCSessionDelegate {
         try? session.updateApplicationContext(payload)
     }
 
-    func sendArrival(alarm: Alarm, stage: AlarmStage) {
+    func sendArrival(alarm: Alarm, stage: AlarmStage,
+                     intensity: HapticIntensity, duration: HapticDuration) {
         guard WCSession.isSupported() else { return }
         let session = WCSession.default
         guard session.activationState == .activated else { return }
@@ -38,7 +39,9 @@ final class WatchBridge: NSObject, WCSessionDelegate {
             "stage": stage.rawValue,
             "stationName": alarm.station.name,
             "lines": alarm.station.lines,
-            "alarmId": alarm.id.uuidString
+            "alarmId": alarm.id.uuidString,
+            "hapticIntensity": intensity.rawValue,
+            "hapticDuration": duration.rawValue
         ]
 
         if session.isReachable {

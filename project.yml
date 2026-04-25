@@ -25,6 +25,7 @@ targets:
       - path: ios/WakeAtStation
         excludes:
           - "Resources/Info.plist"
+      - path: ios/Shared
     resources:
       - path: ios/WakeAtStation/Resources/stations.json
       - path: ios/WakeAtStation/Resources/PrivacyInfo.xcprivacy
@@ -50,7 +51,7 @@ targets:
       - path: ios/WakeAtStationWatch
         excludes:
           - "Resources/Info.plist"
-      - path: ios/Shared/SharedState.swift
+      - path: ios/Shared
     resources:
       - path: ios/WakeAtStationWatch/Resources/PrivacyInfo.xcprivacy
       - path: ios/WakeAtStationWatch/Resources/Assets.xcassets

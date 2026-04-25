@@ -37,21 +37,33 @@ final class WatchArrivalReceiver: NSObject, ObservableObject {
         autoStopWorkItem = nil
     }
 
-    private func startHaptics(isStrong: Bool) {
+    private func startHaptics(isStrong: Bool, intensity: HapticIntensity, duration: HapticDuration) {
         hapticTimer?.invalidate()
         autoStopWorkItem?.cancel()
         isAlerting = true
         WKInterfaceDevice.current().play(isStrong ? .notification : .directionUp)
 
-        let interval: TimeInterval = isStrong ? 0.8 : 2.0
-        let type: WKHapticType = isStrong ? .failure : .click
+        let hapticType: WKHapticType
+        let interval: TimeInterval
+        if isStrong {
+            switch intensity {
+            case .strong: hapticType = .failure
+            case .medium: hapticType = .notification
+            case .soft:   hapticType = .click
+            }
+            interval = intensity.watchInterval
+        } else {
+            hapticType = .click
+            interval = 2.0
+        }
+
         hapticTimer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { _ in
             Task { @MainActor in
-                WKInterfaceDevice.current().play(type)
+                WKInterfaceDevice.current().play(hapticType)
             }
         }
 
-        let timeout: TimeInterval = isStrong ? 120 : 15
+        let timeout: TimeInterval = isStrong ? duration.seconds : 15
         let work = DispatchWorkItem { [weak self] in
             Task { @MainActor in self?.acknowledge() }
         }
@@ -64,7 +76,12 @@ final class WatchArrivalReceiver: NSObject, ObservableObject {
         currentLines = payload["lines"] as? [String] ?? []
         let stageRaw = payload["stage"] as? String ?? "arrival"
         currentStage = stageRaw
-        startHaptics(isStrong: stageRaw == "arrival")
+        let intensity = HapticIntensity(rawValue: payload["hapticIntensity"] as? String ?? "")
+            ?? .strong
+        let duration = HapticDuration(rawValue: payload["hapticDuration"] as? Int ?? 0)
+            ?? .sec120
+        startHaptics(isStrong: stageRaw == "arrival",
+                     intensity: intensity, duration: duration)
     }
 
     private func handleState(payload: [String: Any]) {

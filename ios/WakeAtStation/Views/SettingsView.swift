@@ -7,6 +7,9 @@ struct SettingsView: View {
     @EnvironmentObject var alarmStore: AlarmStore
     @AppStorage("defaultRadius") private var defaultRadiusRaw: Int = AlarmRadius.medium.rawValue
     @AppStorage("defaultTwoStage") private var defaultTwoStage: Bool = true
+    @AppStorage("hapticIntensity") private var hapticIntensityRaw: String = HapticIntensity.strong.rawValue
+    @AppStorage("hapticDuration") private var hapticDurationRaw: Int = HapticDuration.sec120.rawValue
+    @AppStorage("iphoneVibrationEnabled") private var iphoneVibrationEnabled: Bool = true
     @Environment(\.requestReview) private var requestReview
     @State private var showClearRecentsConfirm = false
 
@@ -14,6 +17,20 @@ struct SettingsView: View {
         Binding(
             get: { AlarmRadius(rawValue: defaultRadiusRaw) ?? .medium },
             set: { defaultRadiusRaw = $0.rawValue }
+        )
+    }
+
+    private var hapticIntensity: Binding<HapticIntensity> {
+        Binding(
+            get: { HapticIntensity(rawValue: hapticIntensityRaw) ?? .strong },
+            set: { hapticIntensityRaw = $0.rawValue }
+        )
+    }
+
+    private var hapticDuration: Binding<HapticDuration> {
+        Binding(
+            get: { HapticDuration(rawValue: hapticDurationRaw) ?? .sec120 },
+            set: { hapticDurationRaw = $0.rawValue }
         )
     }
 
@@ -27,6 +44,25 @@ struct SettingsView: View {
                         }
                     }
                     Toggle("2駅前で予告通知", isOn: $defaultTwoStage)
+                }
+
+                Section {
+                    Picker("Watchバイブの強さ", selection: hapticIntensity) {
+                        ForEach(HapticIntensity.allCases) { i in
+                            Text(i.label).tag(i)
+                        }
+                    }
+                    Picker("バイブ継続時間", selection: hapticDuration) {
+                        ForEach(HapticDuration.allCases) { d in
+                            Text(d.label).tag(d)
+                        }
+                    }
+                    Toggle("iPhone本体でもバイブする", isOn: $iphoneVibrationEnabled)
+                } header: {
+                    Text("バイブレーション")
+                } footer: {
+                    Text("iPhoneの振動強度はOSの仕様で変更できません。Watchは強さで間隔(0.7〜1.5秒)が変わります。")
+                        .font(.caption2)
                 }
 
                 Section("位置情報") {

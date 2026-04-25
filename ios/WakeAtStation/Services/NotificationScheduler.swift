@@ -48,14 +48,26 @@ final class NotificationScheduler {
     }
 
     func fire(alarm: Alarm, stage: AlarmStage) {
+        let prefs = UserDefaults.standard
+        let intensity = HapticIntensity(rawValue: prefs.string(forKey: "hapticIntensity") ?? "")
+            ?? .strong
+        let duration = HapticDuration(rawValue: prefs.integer(forKey: "hapticDuration"))
+            ?? .sec120
+        let iphoneVibration = prefs.object(forKey: "iphoneVibrationEnabled") as? Bool ?? true
+
         schedule(alarm: alarm, stage: stage, delay: 0, index: 0)
         if stage == .arrival {
             for (i, delay) in arrivalFollowupDelays.enumerated() {
                 schedule(alarm: alarm, stage: stage, delay: delay, index: i + 1)
             }
         }
-        WatchBridge.shared.sendArrival(alarm: alarm, stage: stage)
-        triggerDeviceHaptics(stage: stage)
+        WatchBridge.shared.sendArrival(
+            alarm: alarm, stage: stage,
+            intensity: intensity, duration: duration
+        )
+        if iphoneVibration {
+            triggerDeviceHaptics(stage: stage)
+        }
     }
 
     private func schedule(alarm: Alarm, stage: AlarmStage, delay: TimeInterval, index: Int) {
