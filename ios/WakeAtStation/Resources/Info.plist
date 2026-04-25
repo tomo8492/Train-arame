@@ -36,7 +36,7 @@
     <dict/>
     <key>UIRequiredDeviceCapabilities</key>
     <array>
-        <string>armv7</string>
+        <string>arm64</string>
         <string>location-services</string>
     </array>
     <key>UISupportedInterfaceOrientations</key>
@@ -47,10 +47,6 @@
     <string>電車移動中に降車駅への接近を検知して通知するために位置情報を使用します。</string>
     <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
     <string>バックグラウンドでも降車駅接近を検知し、寝過ごしを防ぐために常時位置情報を使用します。位置情報は端末内でのみ使用し、外部送信しません。</string>
-    <key>NSLocationUsageDescription</key>
-    <string>降車駅への接近を検知するために位置情報を使用します。</string>
-    <key>WKCompanionAppBundleIdentifier</key>
-    <string>com.tomo.wakeatstation.watchkitapp</string>
     <key>CFBundleURLTypes</key>
     <array>
         <dict>
