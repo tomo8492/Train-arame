@@ -4,6 +4,7 @@ struct RootView: View {
     @EnvironmentObject var locationManager: LocationManager
     @EnvironmentObject var alarmStore: AlarmStore
     @AppStorage("hasSeenOnboarding") private var hasSeenOnboarding: Bool = false
+    @State private var showOnboarding: Bool = false
 
     var body: some View {
         TabView {
@@ -18,9 +19,15 @@ struct RootView: View {
             NotificationDelegate.shared.register(locationManager: locationManager)
             await NotificationScheduler.shared.requestAuthorization()
         }
-        .sheet(isPresented: .constant(!hasSeenOnboarding)) {
+        .onAppear {
+            if !hasSeenOnboarding {
+                showOnboarding = true
+            }
+        }
+        .sheet(isPresented: $showOnboarding) {
+            hasSeenOnboarding = true
+        } content: {
             OnboardingView()
-                .onDisappear { hasSeenOnboarding = true }
         }
     }
 }

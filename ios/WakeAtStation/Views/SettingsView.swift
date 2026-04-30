@@ -90,12 +90,15 @@ struct SettingsView: View {
 
                 Section("フィードバック") {
                     Button("アプリを評価する") { requestReview() }
-                    Link("お問い合わせ",
-                         destination: URL(string: "mailto:support@example.com?subject=駅ウェイク")!)
+                    if let url = contactURL {
+                        Link("お問い合わせ", destination: url)
+                    }
                 }
 
                 Section("このアプリについて") {
-                    Link("プライバシーポリシー", destination: URL(string: "https://example.com/privacy")!)
+                    if let url = privacyPolicyURL {
+                        Link("プライバシーポリシー", destination: url)
+                    }
                     HStack {
                         Text("バージョン")
                         Spacer()
@@ -122,6 +125,18 @@ struct SettingsView: View {
                 Button("キャンセル", role: .cancel) {}
             }
         }
+    }
+
+    private var contactURL: URL? {
+        var components = URLComponents()
+        components.scheme = "mailto"
+        components.path = "support@example.com"
+        components.queryItems = [URLQueryItem(name: "subject", value: "駅ウェイク")]
+        return components.url
+    }
+
+    private var privacyPolicyURL: URL? {
+        URL(string: "https://example.com/privacy")
     }
 
     private var authorizationText: String {

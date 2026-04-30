@@ -11,19 +11,19 @@ struct OnboardingView: View {
                 OnboardPage(
                     icon: "alarm.waves.left.and.right.fill",
                     title: "寝てても降りられる",
-                    body: "目的地の駅が近づいたら、iPhone と Apple Watch のバイブであなたを起こします。"
+                    text: "目的地の駅が近づいたら、iPhone と Apple Watch のバイブであなたを起こします。"
                 ).tag(0)
 
                 OnboardPage(
                     icon: "applewatch.radiowaves.left.and.right",
                     title: "手首で確実に",
-                    body: "Apple Watch の連続 Taptic で、手首を叩いて起こします。\nサイレント中でも振動で気づけます。"
+                    text: "Apple Watch の連続 Taptic で、手首を叩いて起こします。\nサイレント中でも振動で気づけます。"
                 ).tag(1)
 
                 OnboardPage(
                     icon: "location.circle.fill",
                     title: "位置情報を「常に許可」",
-                    body: "電車で寝ていても降車駅への接近を検知するために、\nバックグラウンドでの位置情報利用が必要です。\n位置情報は端末内でのみ使用し、外部送信しません。"
+                    text: "電車で寝ていても降車駅への接近を検知するために、\nバックグラウンドでの位置情報利用が必要です。\n位置情報は端末内でのみ使用し、外部送信しません。"
                 ).tag(2)
             }
             .tabViewStyle(.page(indexDisplayMode: .always))
@@ -57,7 +57,7 @@ struct OnboardingView: View {
 private struct OnboardPage: View {
     let icon: String
     let title: String
-    let body: String
+    let text: String
 
     var body: some View {
         VStack(spacing: 24) {
@@ -68,7 +68,7 @@ private struct OnboardPage: View {
             Text(title)
                 .font(.largeTitle.bold())
                 .multilineTextAlignment(.center)
-            Text(body)
+            Text(text)
                 .font(.body)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
