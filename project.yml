@@ -30,12 +30,11 @@ targets:
       - path: ios/WakeAtStation/Resources/stations.json
       - path: ios/WakeAtStation/Resources/PrivacyInfo.xcprivacy
       - path: ios/WakeAtStation/Resources/Assets.xcassets
-    info:
-      path: ios/WakeAtStation/Resources/Info.plist
     entitlements:
       path: ios/WakeAtStation/WakeAtStation.entitlements
     settings:
       base:
+        INFOPLIST_FILE: ios/WakeAtStation/Resources/Info.plist
         PRODUCT_BUNDLE_IDENTIFIER: com.tomo.wakeatstation
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
@@ -54,12 +53,11 @@ targets:
     resources:
       - path: ios/WakeAtStationWatch/Resources/PrivacyInfo.xcprivacy
       - path: ios/WakeAtStationWatch/Resources/Assets.xcassets
-    info:
-      path: ios/WakeAtStationWatch/Resources/Info.plist
     entitlements:
       path: ios/WakeAtStationWatch/WakeAtStationWatch.entitlements
     settings:
       base:
+        INFOPLIST_FILE: ios/WakeAtStationWatch/Resources/Info.plist
         PRODUCT_BUNDLE_IDENTIFIER: com.tomo.wakeatstation.watchkitapp
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
@@ -77,15 +75,13 @@ targets:
         excludes:
           - "Info.plist"
       - path: ios/Shared/SharedState.swift
-    info:
-      path: ios/WakeAtStationComplication/Info.plist
     entitlements:
       path: ios/WakeAtStationComplication/WakeAtStationComplication.entitlements
     settings:
       base:
+        INFOPLIST_FILE: ios/WakeAtStationComplication/Info.plist
         PRODUCT_BUNDLE_IDENTIFIER: com.tomo.wakeatstation.watchkitapp.complication
         WATCHOS_DEPLOYMENT_TARGET: "10.0"
-        INFOPLIST_KEY_NSExtensionPointIdentifier: com.apple.widgetkit-extension
         SKIP_INSTALL: YES
 
   WakeAtStationTests:
