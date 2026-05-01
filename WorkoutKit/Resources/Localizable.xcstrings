@@ -560,6 +560,30 @@
           }
         }
       }
+    },
+    "store.product.pro.name" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Pro Unlock" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "Pro版解放" } }
+      }
+    },
+    "store.product.pro.description" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Unlimited history, advanced charts, manual entry, and custom templates." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "履歴無制限・高度なグラフ・手動入力・カスタムテンプレート。" } }
+      }
+    },
+    "store.restore.success" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Purchase restored." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "購入を復元しました。" } }
+      }
+    },
+    "store.restore.failure" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Nothing to restore." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "復元できる購入がありません。" } }
+      }
     }
   },
   "version" : "1.0"

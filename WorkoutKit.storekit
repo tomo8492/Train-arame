@@ -1,0 +1,44 @@
+{
+  "identifier" : "E3A1B2C4-D5F6-7890-ABCD-EF1234567890",
+  "nonConsumableIAP" : [
+    {
+      "displayName" : "Pro Unlock",
+      "familySharable" : true,
+      "internalID" : "E3A1B2C4-D5F6-7890-ABCD-EF1234567891",
+      "localizations" : [
+        {
+          "description" : "すべてのPro機能を解放します。履歴無制限・高度なグラフ・手動入力・カスタムテンプレート。",
+          "displayName" : "Pro版解放",
+          "locale" : "ja_JP"
+        },
+        {
+          "description" : "Unlock all Pro features: unlimited history, advanced charts, manual entry, and custom templates.",
+          "displayName" : "Pro Unlock",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.tomo.workoutkit.pro.unlock",
+      "referenceName" : "Pro Unlock",
+      "reviewNote" : "Non-consumable one-time purchase to unlock all Pro features.",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_askToBuyEnabled" : false,
+    "_billingGracePeriodDays" : null,
+    "_buyButtonAttemptHandling" : "ALLOW",
+    "_continuouslyRegenerateLastTransactions" : false,
+    "_failTransactionsEnabled" : false,
+    "_locale" : "en_US",
+    "_paymentsEnabled" : true,
+    "_simulateAskToBuy" : false,
+    "_storefront" : "JPN",
+    "_storeKitErrors" : [
+
+    ]
+  },
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}
