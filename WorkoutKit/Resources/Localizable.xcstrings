@@ -560,6 +560,90 @@
           }
         }
       }
+    },
+    "templates.title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Templates" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "テンプレート" } }
+      }
+    },
+    "templates.empty" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "No templates yet" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "テンプレートがありません" } }
+      }
+    },
+    "templates.badge.preset" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Preset" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "プリセット" } }
+      }
+    },
+    "templates.exercises.count %lld" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "%lld exercises" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "%lld 種目" } }
+      }
+    },
+    "templates.delete" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Delete" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "削除" } }
+      }
+    },
+    "templates.create" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "New Template" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "新規テンプレート" } }
+      }
+    },
+    "templates.edit" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Edit Template" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "テンプレート編集" } }
+      }
+    },
+    "templates.edit.name" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Name" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "名前" } }
+      }
+    },
+    "templates.edit.name.placeholder" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Template name" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "テンプレート名" } }
+      }
+    },
+    "templates.edit.exercises" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Exercises (slugs)" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "種目 (スラッグ)" } }
+      }
+    },
+    "templates.edit.exercises.placeholder" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "squat_barbell, bench_press_barbell, ..." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "squat_barbell, bench_press_barbell, ..." } }
+      }
+    },
+    "templates.cancel" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Cancel" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "キャンセル" } }
+      }
+    },
+    "templates.save" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Save" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "保存" } }
+      }
+    },
+    "templates.pro.required" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Custom templates require Pro." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "カスタムテンプレートはProが必要です。" } }
+      }
     }
   },
   "version" : "1.0"

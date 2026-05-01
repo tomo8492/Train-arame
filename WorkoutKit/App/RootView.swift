@@ -13,6 +13,11 @@ struct RootView: View {
                     Label("ワークアウト", systemImage: "dumbbell.fill")
                 }
 
+            TemplateListView()
+                .tabItem {
+                    Label(String(localized: "templates.title"), systemImage: "doc.text.fill")
+                }
+
             ExerciseView()
                 .tabItem {
                     Label("種目", systemImage: "list.bullet.clipboard.fill")
