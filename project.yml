@@ -79,3 +79,32 @@ targets:
         PRODUCT_BUNDLE_IDENTIFIER: com.tomo.workoutkit.tests
         GENERATE_INFOPLIST_FILE: YES
         SWIFT_VERSION: "5.9"
+
+schemes:
+  WorkoutKit:
+    build:
+      targets:
+        WorkoutKit: all
+        WorkoutKitTests: [test]
+    run:
+      config: Debug
+    test:
+      config: Debug
+      targets:
+        - WorkoutKitTests
+    profile:
+      config: Release
+    analyze:
+      config: Debug
+    archive:
+      config: Release
+
+  WorkoutKit-Beta:
+    build:
+      targets:
+        WorkoutKit: [run, archive]
+    run:
+      config: Beta
+    archive:
+      config: Beta
+      archiveName: WorkoutKit-Beta
