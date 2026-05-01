@@ -1,14 +1,34 @@
 import SwiftUI
+import os
+
+private let logger = Logger(subsystem: "com.tomo.workoutkit", category: "ExerciseView")
 
 struct ExerciseView: View {
+    @State private var exercises: [Exercise] = []
+    @State private var loadError: Bool = false
+
     var body: some View {
-        NavigationStack {
+        if exercises.isEmpty && !loadError {
+            ProgressView()
+                .task { await loadExercises() }
+        } else if loadError {
             ContentUnavailableView(
-                "種目",
-                systemImage: "list.bullet.clipboard.fill",
-                description: Text("登録済みの種目一覧と履歴がここに表示されます。")
+                "読み込みエラー",
+                systemImage: "exclamationmark.triangle",
+                description: Text("種目データを読み込めませんでした。")
             )
-            .navigationTitle("種目")
+        } else {
+            ExerciseListView(exercises: exercises)
+        }
+    }
+
+    private func loadExercises() async {
+        do {
+            exercises = try ExerciseSeedLoader.load()
+            logger.info("Loaded \(exercises.count) exercises for library")
+        } catch {
+            loadError = true
+            logger.error("Failed to load exercises: \(error)")
         }
     }
 }
