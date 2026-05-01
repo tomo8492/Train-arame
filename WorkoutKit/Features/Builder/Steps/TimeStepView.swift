@@ -17,6 +17,8 @@ struct TimeStepView: View {
                         in: 15...90,
                         step: 5
                     )
+                    .accessibilityLabel(String(localized: "time.slider.label", defaultValue: "トレーニング時間"))
+                    .accessibilityValue(String(localized: "time.slider.value", defaultValue: "\(Int(store.minutesAvailable))分"))
 
                     HStack {
                         Text(String(localized: "time.min", defaultValue: "15分"))

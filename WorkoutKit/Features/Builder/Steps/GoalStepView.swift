@@ -10,6 +10,9 @@ struct GoalStepView: View {
                 .onTapGesture {
                     store.selectedGoal = goal
                 }
+                .accessibilityAddTraits(store.selectedGoal == goal ? [.isButton, .isSelected] : .isButton)
+                .accessibilityLabel(goal.localizedName)
+                .accessibilityHint(goal.localizedDescription)
         }
         .listStyle(.insetGrouped)
     }

@@ -161,13 +161,14 @@ private struct ExerciseResultRow: View {
                 Button(action: onToggleLock) {
                     Image(systemName: isLocked ? "lock.fill" : "lock.open")
                         .foregroundStyle(isLocked ? .orange : .secondary)
-                        .accessibilityLabel(
-                            isLocked
-                                ? String(localized: "result.lock.hint")
-                                : String(localized: "result.lock.hint")
-                        )
                 }
                 .buttonStyle(.plain)
+                .accessibilityLabel(
+                    isLocked
+                        ? String(localized: "result.lock.on", defaultValue: "ロック中")
+                        : String(localized: "result.lock.off", defaultValue: "ロック解除中")
+                )
+                .accessibilityHint(String(localized: "result.lock.hint", defaultValue: "タップしてロックを切り替えます"))
             }
         }
         .padding(.vertical, 2)

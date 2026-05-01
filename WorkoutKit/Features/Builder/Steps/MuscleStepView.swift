@@ -16,13 +16,16 @@ struct MuscleStepView: View {
 
                 LazyVGrid(columns: columns, spacing: 10) {
                     ForEach(MuscleGroup.allCases, id: \.self) { muscle in
-                        MuscleToggleCell(
-                            muscle: muscle,
-                            isSelected: store.selectedMuscles.contains(muscle)
-                        )
-                        .onTapGesture {
-                            toggleMuscle(muscle)
-                        }
+                        let isSelected = store.selectedMuscles.contains(muscle)
+                        MuscleToggleCell(muscle: muscle, isSelected: isSelected)
+                            .onTapGesture { toggleMuscle(muscle) }
+                            .accessibilityAddTraits(isSelected ? [.isButton, .isSelected] : .isButton)
+                            .accessibilityLabel(muscle.localizedName)
+                            .accessibilityHint(
+                                isSelected
+                                    ? String(localized: "muscle.hint.deselect", defaultValue: "タップして選択解除")
+                                    : String(localized: "muscle.hint.select", defaultValue: "タップして選択")
+                            )
                     }
                 }
                 .padding(.horizontal)

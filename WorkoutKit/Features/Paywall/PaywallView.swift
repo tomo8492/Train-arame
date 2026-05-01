@@ -71,6 +71,8 @@ struct PaywallView: View {
                     Text(label)
                         .font(.body)
                 }
+                .accessibilityElement(children: .combine)
+                .accessibilityLabel(label)
             }
         }
         .padding()
@@ -112,10 +114,11 @@ struct PaywallView: View {
                     }
                 }
                 .frame(maxWidth: .infinity)
-                .frame(height: 50)
+                .frame(minHeight: 50)
             }
             .buttonStyle(.borderedProminent)
             .disabled(store?.product == nil || store?.isLoading == true)
+            .accessibilityHint(String(localized: "paywall.cta.purchase.hint", defaultValue: "プレミアムを一度購入すると永続的に利用できます"))
 
             Button(String(localized: "paywall.cta.restore")) {
                 Task {
@@ -125,6 +128,7 @@ struct PaywallView: View {
             }
             .font(.subheadline)
             .disabled(store?.isLoading == true)
+            .accessibilityHint(String(localized: "paywall.cta.restore.hint", defaultValue: "過去の購入履歴を復元します"))
 
             if let error = store?.purchaseError {
                 Text(error)

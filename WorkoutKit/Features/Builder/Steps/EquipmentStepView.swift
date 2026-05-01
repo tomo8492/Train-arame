@@ -5,14 +5,17 @@ struct EquipmentStepView: View {
 
     var body: some View {
         List(Equipment.allCases, id: \.self) { equipment in
-            EquipmentRow(
-                equipment: equipment,
-                isSelected: store.selectedEquipment.contains(equipment)
-            )
-            .contentShape(Rectangle())
-            .onTapGesture {
-                toggleEquipment(equipment)
-            }
+            let isSelected = store.selectedEquipment.contains(equipment)
+            EquipmentRow(equipment: equipment, isSelected: isSelected)
+                .contentShape(Rectangle())
+                .onTapGesture { toggleEquipment(equipment) }
+                .accessibilityAddTraits(isSelected ? [.isButton, .isSelected] : .isButton)
+                .accessibilityLabel(equipment.localizedName)
+                .accessibilityHint(
+                    isSelected
+                        ? String(localized: "equipment.hint.deselect", defaultValue: "タップして選択解除")
+                        : String(localized: "equipment.hint.select", defaultValue: "タップして選択")
+                )
         }
         .listStyle(.insetGrouped)
     }

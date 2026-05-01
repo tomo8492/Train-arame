@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct SessionView: View {
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     // MARK: - Dependencies
 
@@ -28,7 +29,11 @@ struct SessionView: View {
                     .listStyle(.insetGrouped)
                     .onChange(of: store.currentIndex) { _, _ in
                         if let id = store.currentSet?.id {
-                            withAnimation { proxy.scrollTo(id, anchor: .center) }
+                            if reduceMotion {
+                                proxy.scrollTo(id, anchor: .center)
+                            } else {
+                                withAnimation { proxy.scrollTo(id, anchor: .center) }
+                            }
                         }
                         savedIndex = store.currentIndex
                     }
@@ -140,10 +145,12 @@ struct SessionView: View {
                 Rectangle()
                     .fill(Color.accentColor)
                     .frame(width: geo.size.width * store.progress)
-                    .animation(.easeInOut, value: store.progress)
+                    .animation(reduceMotion ? nil : .easeInOut, value: store.progress)
             }
         }
         .frame(height: 4)
+        .accessibilityLabel(String(localized: "session.progress.label", defaultValue: "進捗"))
+        .accessibilityValue(String(format: "%.0f%%", store.progress * 100))
     }
 
     // MARK: - Bottom bar
@@ -191,6 +198,12 @@ struct SessionView: View {
             Spacer()
         }
         .padding(.horizontal)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel(String(
+            localized: "session.rest.accessibility",
+            defaultValue: "休憩タイマー \(timeString(from: store.secondsRemaining))"
+        ))
+        .accessibilityAddTraits(.updatesFrequently)
     }
 
     private func timeString(from seconds: Int) -> String {
@@ -274,6 +287,7 @@ private struct ActiveSetRow: View {
             }
             .buttonStyle(.borderedProminent)
             .frame(maxWidth: .infinity)
+            .accessibilityHint(String(localized: "session.complete.hint", defaultValue: "回数と重量を入力してタップするとセットを記録します"))
         }
         .padding(.vertical, 4)
     }
@@ -298,7 +312,14 @@ private struct CompactSetRow: View {
             Spacer()
             Image(systemName: set.isCompleted ? "checkmark.circle.fill" : "circle")
                 .foregroundStyle(set.isCompleted ? .green : .secondary)
+                .accessibilityLabel(
+                    set.isCompleted
+                        ? String(localized: "session.set.completed", defaultValue: "完了")
+                        : String(localized: "session.set.pending", defaultValue: "未完了")
+                )
         }
         .padding(.vertical, 2)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("\(set.exerciseName) — \(set.isCompleted ? String(localized: "session.set.completed", defaultValue: "完了") : String(localized: "session.set.pending", defaultValue: "未完了"))")
     }
 }
