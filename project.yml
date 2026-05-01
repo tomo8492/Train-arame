@@ -53,6 +53,7 @@ targets:
           - UIInterfaceOrientationPortrait
         UIApplicationSceneManifest:
           UIApplicationSupportsMultipleScenes: false
+        NSSupportsLiveActivities: true
     entitlements:
       path: WorkoutKit/WorkoutKit.entitlements
       properties:
@@ -65,6 +66,28 @@ targets:
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
         TARGETED_DEVICE_FAMILY: "1"
     dependencies: []
+
+  WorkoutKitLiveActivity:
+    type: app-extension
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: WorkoutKitLiveActivity
+        excludes:
+          - "Info.plist"
+          - "WorkoutKitLiveActivity.entitlements"
+    info:
+      path: WorkoutKitLiveActivity/Info.plist
+    entitlements:
+      path: WorkoutKitLiveActivity/WorkoutKitLiveActivity.entitlements
+      properties:
+        com.apple.security.application-groups:
+          - group.com.tomo.workoutkit
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.tomo.workoutkit.liveactivity
+        SWIFT_VERSION: "5.9"
+        INFOPLIST_FILE: WorkoutKitLiveActivity/Info.plist
 
   WorkoutKitTests:
     type: bundle.unit-test
