@@ -13,7 +13,8 @@ final class SessionStore {
     private(set) var currentIndex: Int = 0
     private(set) var secondsRemaining: Int = 0
     private(set) var isResting: Bool = false
-    private var restTimer: Timer?
+    private var restTask: Task<Void, Never>?
+    private let intervalTimer = IntervalTimer()
     private let restSeconds: Int
     private var session: WorkoutSession
 
@@ -117,15 +118,14 @@ final class SessionStore {
 
     func startRestTimer() {
         cancelRestTimer()
-        secondsRemaining = restSeconds
         isResting = true
-        restTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
-            Task { @MainActor [weak self] in
-                guard let self else { return }
-                if self.secondsRemaining > 0 {
-                    self.secondsRemaining -= 1
-                } else {
-                    self.cancelRestTimer()
+        restTask = Task { [weak self] in
+            guard let self else { return }
+            let stream = await self.intervalTimer.start(seconds: self.restSeconds)
+            for await remaining in stream {
+                self.secondsRemaining = remaining
+                if remaining == 0 {
+                    self.isResting = false
                 }
             }
         }
@@ -133,8 +133,9 @@ final class SessionStore {
     }
 
     func cancelRestTimer() {
-        restTimer?.invalidate()
-        restTimer = nil
+        restTask?.cancel()
+        restTask = nil
+        Task { await intervalTimer.cancel() }
         isResting = false
         secondsRemaining = 0
     }
