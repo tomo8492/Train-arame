@@ -584,6 +584,120 @@
         "en" : { "stringUnit" : { "state" : "translated", "value" : "Nothing to restore." } },
         "ja" : { "stringUnit" : { "state" : "translated", "value" : "復元できる購入がありません。" } }
       }
+    },
+    "paywall.title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Upgrade to Pro" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "Pro版にアップグレード" } }
+      }
+    },
+    "paywall.headline" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Unlock Everything" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "すべての機能を解放" } }
+      }
+    },
+    "paywall.subheadline" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "One-time purchase. No subscription." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "買い切り。サブスクなし。" } }
+      }
+    },
+    "paywall.feature.history" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Unlimited workout history" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "ワークアウト履歴無制限" } }
+      }
+    },
+    "paywall.feature.charts" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Advanced charts & analytics" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "高度なグラフ・分析" } }
+      }
+    },
+    "paywall.feature.manual" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Manual workout entry" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "ワークアウトの手動入力" } }
+      }
+    },
+    "paywall.feature.templates" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Custom workout templates" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "カスタムワークアウトテンプレート" } }
+      }
+    },
+    "paywall.one.time" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "One-time purchase" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "買い切り" } }
+      }
+    },
+    "paywall.cta.purchase" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Buy Now" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "今すぐ購入" } }
+      }
+    },
+    "paywall.cta.restore" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Restore Purchase" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "購入を復元" } }
+      }
+    },
+    "paywall.restore.alert" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Restore complete." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "復元が完了しました。" } }
+      }
+    },
+    "paywall.close" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Close" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "閉じる" } }
+      }
+    },
+    "paywall.terms" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Terms of Service" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "利用規約" } }
+      }
+    },
+    "paywall.privacy" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Privacy Policy" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "プライバシーポリシー" } }
+      }
+    },
+    "profile.title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Profile" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "プロフィール" } }
+      }
+    },
+    "profile.pro.active" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Pro · Active" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "Pro版 · 有効" } }
+      }
+    },
+    "profile.pro.cta" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Unlock Pro" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "Pro版を解放" } }
+      }
+    },
+    "profile.pro.subtitle" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "One-time purchase. No subscription." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "買い切り。サブスクなし。" } }
+      }
+    },
+    "profile.pro.button" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Upgrade" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "アップグレード" } }
+      }
     }
   },
   "version" : "1.0"
