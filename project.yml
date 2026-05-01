@@ -43,6 +43,7 @@ targets:
       - path: WorkoutKit/Resources/exercises_seed.json
       - path: WorkoutKit/Resources/PrivacyInfo.xcprivacy
       - path: WorkoutKit/Resources/Assets.xcassets
+      - path: WorkoutKit/Resources/Localizable.xcstrings
     info:
       path: WorkoutKit/Resources/Info.plist
       properties:
