@@ -560,6 +560,132 @@
           }
         }
       }
+    },
+    "settings.title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Settings" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "設定" } }
+      }
+    },
+    "settings.section.units" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Units" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "単位" } }
+      }
+    },
+    "settings.weight.unit" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Weight Unit" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "重量単位" } }
+      }
+    },
+    "settings.section.appearance" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Appearance" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "外観" } }
+      }
+    },
+    "settings.theme" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Theme" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "テーマ" } }
+      }
+    },
+    "settings.theme.system" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "System" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "システム" } }
+      }
+    },
+    "settings.theme.light" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Light" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "ライト" } }
+      }
+    },
+    "settings.theme.dark" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Dark" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "ダーク" } }
+      }
+    },
+    "settings.section.pro" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Pro" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "Pro版" } }
+      }
+    },
+    "settings.upgrade" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Upgrade to Pro" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "Proにアップグレード" } }
+      }
+    },
+    "settings.restore.purchase" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Restore Purchase" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "購入を復元" } }
+      }
+    },
+    "settings.restore.success" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Purchase restored successfully." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "購入を復元しました。" } }
+      }
+    },
+    "settings.section.about" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "About" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "このアプリについて" } }
+      }
+    },
+    "settings.about" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "About WorkoutKit" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "WorkoutKitについて" } }
+      }
+    },
+    "settings.version" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Version" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "バージョン" } }
+      }
+    },
+    "about.version" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Version" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "バージョン" } }
+      }
+    },
+    "about.section.disclaimer" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Disclaimer" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "免責事項" } }
+      }
+    },
+    "about.disclaimer.text" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "This app is not a substitute for professional medical advice. Consult a qualified healthcare professional before starting any exercise program." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "このアプリは医師や専門家の指導の代わりになるものではありません。運動プログラムを開始する前に、医療専門家に相談してください。" } }
+      }
+    },
+    "about.section.links" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Links" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "リンク" } }
+      }
+    },
+    "about.privacy.policy" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Privacy Policy" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "プライバシーポリシー" } }
+      }
+    },
+    "about.terms" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Terms of Service" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "利用規約" } }
+      }
     }
   },
   "version" : "1.0"

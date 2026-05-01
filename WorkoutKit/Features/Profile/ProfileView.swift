@@ -1,14 +1,23 @@
 import SwiftUI
 
 struct ProfileView: View {
+    @State private var showSettings = false
+
     var body: some View {
         NavigationStack {
-            ContentUnavailableView(
-                "プロフィール",
-                systemImage: "person.fill",
-                description: Text("設定・プロフィール情報がここに表示されます。")
-            )
+            List {
+                Section {
+                    Button {
+                        showSettings = true
+                    } label: {
+                        Label(String(localized: "settings.title"), systemImage: "gearshape.fill")
+                    }
+                }
+            }
             .navigationTitle("プロフィール")
+            .sheet(isPresented: $showSettings) {
+                SettingsView()
+            }
         }
     }
 }
