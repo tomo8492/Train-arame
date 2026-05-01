@@ -4,8 +4,12 @@ struct BuilderView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var store: BuilderStore
 
-    init(exercisePool: [Exercise]) {
+    /// Called when the user taps "セッション開始" — passes the generated output to the caller.
+    var onSessionStart: ((GeneratorOutput) -> Void)?
+
+    init(exercisePool: [Exercise], onSessionStart: ((GeneratorOutput) -> Void)? = nil) {
         _store = State(initialValue: BuilderStore(exercisePool: exercisePool))
+        self.onSessionStart = onSessionStart
     }
 
     var body: some View {
@@ -46,7 +50,12 @@ struct BuilderView: View {
         case .time:
             TimeStepView(store: store)
         case .result:
-            ResultStepView(store: store, onDismiss: { dismiss() })
+            ResultStepView(store: store, onDismiss: {
+                if let output = store.output {
+                    onSessionStart?(output)
+                }
+                dismiss()
+            })
         }
     }
 
