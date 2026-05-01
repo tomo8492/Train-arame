@@ -4,6 +4,7 @@ struct HistoryView: View {
     @State private var store: HistoryStore
     private let gate: ProFeatureGate
     @State private var showPaywall = false
+    @State private var showManualEntry = false
 
     init(store: HistoryStore, gate: ProFeatureGate) {
         _store = State(initialValue: store)
@@ -24,15 +25,29 @@ struct HistoryView: View {
             .navigationTitle(String(localized: "history.title"))
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink {
-                        HistoryChartsView(weeklyData: store.weeklyVolume, gate: gate)
-                    } label: {
-                        Image(systemName: "chart.bar.xaxis")
+                    HStack {
+                        Button {
+                            if gate.check(.manualEntry) {
+                                showManualEntry = true
+                            } else {
+                                showPaywall = true
+                            }
+                        } label: {
+                            Image(systemName: "square.and.pencil")
+                        }
+                        NavigationLink {
+                            HistoryChartsView(weeklyData: store.weeklyVolume, gate: gate)
+                        } label: {
+                            Image(systemName: "chart.bar.xaxis")
+                        }
                     }
                 }
             }
             .sheet(isPresented: $showPaywall) {
                 PaywallView(gate: gate, feature: .unlimitedHistory)
+            }
+            .sheet(isPresented: $showManualEntry) {
+                ManualEntryView()
             }
         }
     }

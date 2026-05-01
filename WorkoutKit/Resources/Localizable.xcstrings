@@ -768,6 +768,60 @@
           }
         }
       }
+    },
+    "manual.title": {
+      "localizations": {
+        "en": { "stringUnit": { "state": "translated", "value": "Log Manually" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "手動入力" } }
+      }
+    },
+    "manual.section.date": {
+      "localizations": {
+        "en": { "stringUnit": { "state": "translated", "value": "Date" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "日付" } }
+      }
+    },
+    "manual.date": {
+      "localizations": {
+        "en": { "stringUnit": { "state": "translated", "value": "Date & Time" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "日時" } }
+      }
+    },
+    "manual.section.sets": {
+      "localizations": {
+        "en": { "stringUnit": { "state": "translated", "value": "Sets" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "セット" } }
+      }
+    },
+    "manual.add.set": {
+      "localizations": {
+        "en": { "stringUnit": { "state": "translated", "value": "Add Set" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "セット追加" } }
+      }
+    },
+    "manual.exercise.name": {
+      "localizations": {
+        "en": { "stringUnit": { "state": "translated", "value": "Exercise Name" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "種目名" } }
+      }
+    },
+    "manual.cancel": {
+      "localizations": {
+        "en": { "stringUnit": { "state": "translated", "value": "Cancel" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "キャンセル" } }
+      }
+    },
+    "manual.save": {
+      "localizations": {
+        "en": { "stringUnit": { "state": "translated", "value": "Save" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "保存" } }
+      }
+    },
+    "manual.reps %lld": {
+      "localizations": {
+        "en": { "stringUnit": { "state": "translated", "value": "%lld reps" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "%lld 回" } }
+      }
     }
   },
   "version": "1.0"
