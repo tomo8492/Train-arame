@@ -28,6 +28,10 @@ final class BuilderStore {
     var includeWarmup: Bool = true
     var includeCooldown: Bool = true
 
+    // MARK: - ShuffleChoose
+
+    let shuffleChooseStore = ShuffleChooseStore()
+
     // MARK: - Private
 
     private let generator: WorkoutGenerator
@@ -74,7 +78,7 @@ final class BuilderStore {
         output = nil
 
         let input = GeneratorInput(
-            lockedExerciseSlugs: [],
+            lockedExerciseSlugs: Array(shuffleChooseStore.lockedSlugs),
             equipment: Array(selectedEquipment),
             primaryMuscles: Array(selectedMuscles),
             goal: selectedGoal,
@@ -94,6 +98,37 @@ final class BuilderStore {
         } catch {
             errorMessage = error.localizedDescription
             logger.error("Generation failed: \(error)")
+        }
+
+        isLoading = false
+    }
+
+    func regenerate() async {
+        isLoading = true
+        errorMessage = nil
+        output = nil
+
+        let input = GeneratorInput(
+            lockedExerciseSlugs: Array(shuffleChooseStore.lockedSlugs),
+            equipment: Array(selectedEquipment),
+            primaryMuscles: Array(selectedMuscles),
+            goal: selectedGoal,
+            minutesAvailable: Int(minutesAvailable),
+            includeWarmup: includeWarmup,
+            includeCooldown: includeCooldown,
+            randomSeed: nil
+        )
+
+        do {
+            let result = try generator.generate(input: input)
+            output = result
+            logger.info("Regeneration succeeded: \(result.totalExerciseCount) exercises")
+        } catch AppError.generatorEmpty {
+            errorMessage = String(localized: "error.generator.empty")
+            logger.warning("Regenerator returned empty result")
+        } catch {
+            errorMessage = error.localizedDescription
+            logger.error("Regeneration failed: \(error)")
         }
 
         isLoading = false

@@ -67,11 +67,29 @@ struct ResultStepView: View {
     // MARK: - Result list
 
     private func resultList(output: GeneratorOutput) -> some View {
-        List {
+        let scStore = store.shuffleChooseStore
+        return List {
+            // Mode toggle
+            Section {
+                Picker(String(localized: "result.mode.label", defaultValue: "モード"),
+                       selection: Bindable(scStore).mode) {
+                    Text(String(localized: "result.mode.shuffle")).tag(ResultMode.shuffle)
+                    Text(String(localized: "result.mode.choose")).tag(ResultMode.choose)
+                }
+                .pickerStyle(.segmented)
+                .listRowBackground(Color.clear)
+                .listRowInsets(EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0))
+            }
+
             if !output.warmup.isEmpty {
                 Section(String(localized: "result.section.warmup", defaultValue: "ウォームアップ")) {
                     ForEach(output.warmup) { exercise in
-                        ExerciseResultRow(exercise: exercise)
+                        ExerciseResultRow(
+                            exercise: exercise,
+                            isChooseMode: scStore.mode == .choose,
+                            isLocked: scStore.isLocked(exercise.slug),
+                            onToggleLock: { scStore.toggleLock(slug: exercise.slug) }
+                        )
                     }
                 }
             }
@@ -79,7 +97,12 @@ struct ResultStepView: View {
             if !output.main.isEmpty {
                 Section(String(localized: "result.section.main", defaultValue: "メインセット")) {
                     ForEach(output.main) { exercise in
-                        ExerciseResultRow(exercise: exercise)
+                        ExerciseResultRow(
+                            exercise: exercise,
+                            isChooseMode: scStore.mode == .choose,
+                            isLocked: scStore.isLocked(exercise.slug),
+                            onToggleLock: { scStore.toggleLock(slug: exercise.slug) }
+                        )
                     }
                 }
             }
@@ -87,12 +110,24 @@ struct ResultStepView: View {
             if !output.cooldown.isEmpty {
                 Section(String(localized: "result.section.cooldown", defaultValue: "クールダウン")) {
                     ForEach(output.cooldown) { exercise in
-                        ExerciseResultRow(exercise: exercise)
+                        ExerciseResultRow(
+                            exercise: exercise,
+                            isChooseMode: scStore.mode == .choose,
+                            isLocked: scStore.isLocked(exercise.slug),
+                            onToggleLock: { scStore.toggleLock(slug: exercise.slug) }
+                        )
                     }
                 }
             }
 
+            // Footer actions
             Section {
+                if scStore.mode == .shuffle {
+                    Button(String(localized: "result.regenerate")) {
+                        Task { await store.regenerate() }
+                    }
+                    .frame(maxWidth: .infinity)
+                }
                 Button(String(localized: "builder.start.session")) {
                     onDismiss()
                 }
@@ -108,15 +143,38 @@ struct ResultStepView: View {
 
 private struct ExerciseResultRow: View {
     let exercise: Exercise
+    let isChooseMode: Bool
+    let isLocked: Bool
+    let onToggleLock: () -> Void
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 2) {
-            Text(exercise.name)
-                .font(.body)
-            Text(exercise.nameEn)
-                .font(.caption)
-                .foregroundStyle(.secondary)
+        HStack {
+            VStack(alignment: .leading, spacing: 2) {
+                Text(exercise.name)
+                    .font(.body)
+                Text(exercise.nameEn)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+            Spacer()
+            if isChooseMode {
+                Button(action: onToggleLock) {
+                    Image(systemName: isLocked ? "lock.fill" : "lock.open")
+                        .foregroundStyle(isLocked ? .orange : .secondary)
+                        .accessibilityLabel(
+                            isLocked
+                                ? String(localized: "result.lock.hint")
+                                : String(localized: "result.lock.hint")
+                        )
+                }
+                .buttonStyle(.plain)
+            }
         }
         .padding(.vertical, 2)
+        .listRowBackground(
+            isChooseMode && isLocked
+                ? Color.orange.opacity(0.12)
+                : Color(uiColor: .secondarySystemGroupedBackground)
+        )
     }
 }
