@@ -18,6 +18,7 @@
 		CEBB3EDBC37D0E4C29F06EAA /* WorkoutKitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7113DFCF9D8F079AD341599 /* WorkoutKitApp.swift */; };
 		D36C941C132EC7ED8FED19C2 /* OneRepMaxCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938150150F238FD682C35B9A /* OneRepMaxCalculatorTests.swift */; };
 		FA3DE908FFE6B9186E2032FD /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F397E5ED41573FE7E0FB2EC1 /* ProfileView.swift */; };
+		FC060DB49FEACA6D14D6420C /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = FEFD92C6BD6823D8CAB33F3E /* Localizable.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		F397E5ED41573FE7E0FB2EC1 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		F4C8361D323E50650DB71F99 /* WorkoutKit.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = WorkoutKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9F4F397B1F79347AA8BBE43 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		FEFD92C6BD6823D8CAB33F3E /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -150,6 +152,7 @@
 			children = (
 				CAE497A1E25480C6EE0C78C0 /* Assets.xcassets */,
 				46DCAFA5FD59CA1EE733A1EA /* exercises_seed.json */,
+				FEFD92C6BD6823D8CAB33F3E /* Localizable.xcstrings */,
 				B0B0C97D2DC04DCD60842B25 /* PrivacyInfo.xcprivacy */,
 			);
 			path = Resources;
@@ -235,6 +238,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				Base,
+				en,
 				ja,
 			);
 			mainGroup = 792AEAB7CD8EFDFB2B1B0A82;
@@ -256,6 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC46F1B271E59F755D6723F5 /* Assets.xcassets in Resources */,
+				FC060DB49FEACA6D14D6420C /* Localizable.xcstrings in Resources */,
 				0E7A1C81190C1F8BDE9471B2 /* PrivacyInfo.xcprivacy in Resources */,
 				1E7C7C6CF826738E804802BD /* exercises_seed.json in Resources */,
 			);

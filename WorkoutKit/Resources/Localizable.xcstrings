@@ -1,0 +1,176 @@
+{
+  "sourceLanguage" : "ja",
+  "strings" : {
+    "error.data.corruption" : {
+      "comment" : "Error message when stored data is corrupted",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data is corrupted"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "データが破損しています"
+          }
+        }
+      }
+    },
+    "error.generator.empty" : {
+      "comment" : "Error message when there is no data to generate",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No data to generate"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "生成するデータがありません"
+          }
+        }
+      }
+    },
+    "error.import.failed" : {
+      "comment" : "Error message when data import fails",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Import failed"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "データのインポートに失敗しました"
+          }
+        }
+      }
+    },
+    "error.media.missing" : {
+      "comment" : "Error message when a media file cannot be found",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Media file not found"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "メディアファイルが見つかりません"
+          }
+        }
+      }
+    },
+    "error.pro.required" : {
+      "comment" : "Error message when a Pro plan is required to use a feature",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pro plan required for this feature"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この機能はProプランが必要です"
+          }
+        }
+      }
+    },
+    "error.purchase.failed" : {
+      "comment" : "Error message when an in-app purchase fails",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Purchase failed"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "購入処理に失敗しました"
+          }
+        }
+      }
+    },
+    "tab.history" : {
+      "comment" : "Tab bar label for the Exercise/History tab",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exercise"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "種目"
+          }
+        }
+      }
+    },
+    "tab.library" : {
+      "comment" : "Tab bar label for the Workout/Library tab",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Workout"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ワークアウト"
+          }
+        }
+      }
+    },
+    "tab.settings" : {
+      "comment" : "Tab bar label for the Profile/Settings tab",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profile"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロフィール"
+          }
+        }
+      }
+    },
+    "tab.today" : {
+      "comment" : "Tab bar label for the Home/Today tab",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Home"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ホーム"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
