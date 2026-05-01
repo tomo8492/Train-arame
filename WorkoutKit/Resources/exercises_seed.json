@@ -1,74 +1,2090 @@
 [
   {
-    "id": "squat",
-    "name": "スクワット",
-    "nameEn": "Squat",
-    "category": "legs",
-    "primaryMuscles": ["quadriceps", "glutes"],
-    "secondaryMuscles": ["hamstrings", "core"],
-    "equipment": "barbell"
-  },
-  {
-    "id": "bench_press",
-    "name": "ベンチプレス",
-    "nameEn": "Bench Press",
-    "category": "chest",
-    "primaryMuscles": ["pectoralis_major"],
-    "secondaryMuscles": ["triceps", "anterior_deltoid"],
-    "equipment": "barbell"
-  },
-  {
-    "id": "deadlift",
-    "name": "デッドリフト",
-    "nameEn": "Deadlift",
-    "category": "back",
-    "primaryMuscles": ["erector_spinae", "glutes"],
-    "secondaryMuscles": ["hamstrings", "trapezius"],
-    "equipment": "barbell"
-  },
-  {
-    "id": "overhead_press",
-    "name": "オーバーヘッドプレス",
-    "nameEn": "Overhead Press",
-    "category": "shoulders",
-    "primaryMuscles": ["deltoid"],
-    "secondaryMuscles": ["triceps", "core"],
-    "equipment": "barbell"
-  },
-  {
-    "id": "barbell_row",
-    "name": "バーベルロウ",
-    "nameEn": "Barbell Row",
-    "category": "back",
-    "primaryMuscles": ["latissimus_dorsi", "rhomboids"],
-    "secondaryMuscles": ["biceps", "rear_deltoid"],
-    "equipment": "barbell"
-  },
-  {
-    "id": "pull_up",
-    "name": "懸垂",
-    "nameEn": "Pull-up",
-    "category": "back",
-    "primaryMuscles": ["latissimus_dorsi"],
-    "secondaryMuscles": ["biceps", "core"],
+    "slug": "arm_circle",
+    "name": "アームサークル",
+    "nameEn": "Arm Circle",
+    "category": "warmup",
+    "primaryMuscles": [
+      "deltoid"
+    ],
+    "secondaryMuscles": [
+      "shoulders"
+    ],
     "equipment": "bodyweight"
   },
   {
-    "id": "dumbbell_curl",
-    "name": "ダンベルカール",
-    "nameEn": "Dumbbell Curl",
-    "category": "arms",
-    "primaryMuscles": ["biceps"],
-    "secondaryMuscles": ["brachialis"],
+    "slug": "leg_swing",
+    "name": "レッグスウィング",
+    "nameEn": "Leg Swing",
+    "category": "warmup",
+    "primaryMuscles": [
+      "hip_flexors"
+    ],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "hip_circle",
+    "name": "ヒップサークル",
+    "nameEn": "Hip Circle",
+    "category": "warmup",
+    "primaryMuscles": [
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "hip_flexors",
+      "core"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "inchworm",
+    "name": "インチワーム",
+    "nameEn": "Inchworm",
+    "category": "warmup",
+    "primaryMuscles": [
+      "core"
+    ],
+    "secondaryMuscles": [
+      "hamstrings",
+      "erector_spinae"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "jumping_jack",
+    "name": "ジャンピングジャック",
+    "nameEn": "Jumping Jack",
+    "category": "warmup",
+    "primaryMuscles": [
+      "legs"
+    ],
+    "secondaryMuscles": [
+      "shoulders",
+      "core"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "high_knee_march",
+    "name": "ハイニーマーチ",
+    "nameEn": "High Knee March",
+    "category": "warmup",
+    "primaryMuscles": [
+      "hip_flexors"
+    ],
+    "secondaryMuscles": [
+      "quadriceps",
+      "core"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "shoulder_roll",
+    "name": "ショルダーロール",
+    "nameEn": "Shoulder Roll",
+    "category": "warmup",
+    "primaryMuscles": [
+      "trapezius"
+    ],
+    "secondaryMuscles": [
+      "deltoid"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "neck_rotation",
+    "name": "ネックローテーション",
+    "nameEn": "Neck Rotation",
+    "category": "warmup",
+    "primaryMuscles": [
+      "neck"
+    ],
+    "secondaryMuscles": [
+      "trapezius"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "butt_kick",
+    "name": "バットキック",
+    "nameEn": "Butt Kick",
+    "category": "warmup",
+    "primaryMuscles": [
+      "hamstrings"
+    ],
+    "secondaryMuscles": [
+      "glutes",
+      "calves"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "wrist_rotation",
+    "name": "リストローテーション",
+    "nameEn": "Wrist Rotation",
+    "category": "warmup",
+    "primaryMuscles": [
+      "forearms"
+    ],
+    "secondaryMuscles": [
+      "arms"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "squat",
+    "name": "スクワット",
+    "nameEn": "Squat",
+    "category": "strength_compound",
+    "primaryMuscles": [
+      "quadriceps",
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "hamstrings",
+      "core"
+    ],
+    "equipment": "barbell"
+  },
+  {
+    "slug": "bench_press",
+    "name": "ベンチプレス",
+    "nameEn": "Bench Press",
+    "category": "strength_compound",
+    "primaryMuscles": [
+      "pectoralis_major"
+    ],
+    "secondaryMuscles": [
+      "triceps",
+      "anterior_deltoid"
+    ],
+    "equipment": "barbell"
+  },
+  {
+    "slug": "deadlift",
+    "name": "デッドリフト",
+    "nameEn": "Deadlift",
+    "category": "strength_compound",
+    "primaryMuscles": [
+      "erector_spinae",
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "hamstrings",
+      "trapezius"
+    ],
+    "equipment": "barbell"
+  },
+  {
+    "slug": "overhead_press",
+    "name": "オーバーヘッドプレス",
+    "nameEn": "Overhead Press",
+    "category": "strength_compound",
+    "primaryMuscles": [
+      "deltoid"
+    ],
+    "secondaryMuscles": [
+      "triceps",
+      "core"
+    ],
+    "equipment": "barbell"
+  },
+  {
+    "slug": "barbell_row",
+    "name": "バーベルロウ",
+    "nameEn": "Barbell Row",
+    "category": "strength_compound",
+    "primaryMuscles": [
+      "latissimus_dorsi",
+      "rhomboids"
+    ],
+    "secondaryMuscles": [
+      "biceps",
+      "rear_deltoid"
+    ],
+    "equipment": "barbell"
+  },
+  {
+    "slug": "front_squat",
+    "name": "フロントスクワット",
+    "nameEn": "Front Squat",
+    "category": "strength_compound",
+    "primaryMuscles": [
+      "quadriceps"
+    ],
+    "secondaryMuscles": [
+      "glutes",
+      "core",
+      "erector_spinae"
+    ],
+    "equipment": "barbell"
+  },
+  {
+    "slug": "romanian_deadlift",
+    "name": "ルーマニアンデッドリフト",
+    "nameEn": "Romanian Deadlift",
+    "category": "strength_compound",
+    "primaryMuscles": [
+      "hamstrings",
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "erector_spinae"
+    ],
+    "equipment": "barbell"
+  },
+  {
+    "slug": "sumo_deadlift",
+    "name": "スモウデッドリフト",
+    "nameEn": "Sumo Deadlift",
+    "category": "strength_compound",
+    "primaryMuscles": [
+      "glutes",
+      "quadriceps"
+    ],
+    "secondaryMuscles": [
+      "hamstrings",
+      "erector_spinae"
+    ],
+    "equipment": "barbell"
+  },
+  {
+    "slug": "incline_bench_press",
+    "name": "インクラインベンチプレス",
+    "nameEn": "Incline Bench Press",
+    "category": "strength_compound",
+    "primaryMuscles": [
+      "pectoralis_major"
+    ],
+    "secondaryMuscles": [
+      "anterior_deltoid",
+      "triceps"
+    ],
+    "equipment": "barbell"
+  },
+  {
+    "slug": "close_grip_bench_press",
+    "name": "ナローグリップベンチプレス",
+    "nameEn": "Close Grip Bench Press",
+    "category": "strength_compound",
+    "primaryMuscles": [
+      "triceps",
+      "pectoralis_major"
+    ],
+    "secondaryMuscles": [
+      "anterior_deltoid"
+    ],
+    "equipment": "barbell"
+  },
+  {
+    "slug": "barbell_hip_thrust",
+    "name": "バーベルヒップスラスト",
+    "nameEn": "Barbell Hip Thrust",
+    "category": "strength_compound",
+    "primaryMuscles": [
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "hamstrings",
+      "core"
+    ],
+    "equipment": "barbell"
+  },
+  {
+    "slug": "barbell_lunge",
+    "name": "バーベルランジ",
+    "nameEn": "Barbell Lunge",
+    "category": "strength_compound",
+    "primaryMuscles": [
+      "quadriceps",
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "hamstrings",
+      "core"
+    ],
+    "equipment": "barbell"
+  },
+  {
+    "slug": "dumbbell_bench_press",
+    "name": "ダンベルベンチプレス",
+    "nameEn": "Dumbbell Bench Press",
+    "category": "strength_compound",
+    "primaryMuscles": [
+      "pectoralis_major"
+    ],
+    "secondaryMuscles": [
+      "triceps",
+      "anterior_deltoid"
+    ],
     "equipment": "dumbbell"
   },
   {
-    "id": "tricep_pushdown",
+    "slug": "dumbbell_shoulder_press",
+    "name": "ダンベルショルダープレス",
+    "nameEn": "Dumbbell Shoulder Press",
+    "category": "strength_compound",
+    "primaryMuscles": [
+      "deltoid"
+    ],
+    "secondaryMuscles": [
+      "triceps",
+      "trapezius"
+    ],
+    "equipment": "dumbbell"
+  },
+  {
+    "slug": "dumbbell_row",
+    "name": "ダンベルロウ",
+    "nameEn": "Dumbbell Row",
+    "category": "strength_compound",
+    "primaryMuscles": [
+      "latissimus_dorsi",
+      "rhomboids"
+    ],
+    "secondaryMuscles": [
+      "biceps",
+      "rear_deltoid"
+    ],
+    "equipment": "dumbbell"
+  },
+  {
+    "slug": "goblet_squat",
+    "name": "ゴブレットスクワット",
+    "nameEn": "Goblet Squat",
+    "category": "strength_compound",
+    "primaryMuscles": [
+      "quadriceps",
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "core",
+      "hamstrings"
+    ],
+    "equipment": "dumbbell"
+  },
+  {
+    "slug": "kettlebell_swing",
+    "name": "ケトルベルスイング",
+    "nameEn": "Kettlebell Swing",
+    "category": "strength_compound",
+    "primaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
+    "secondaryMuscles": [
+      "erector_spinae",
+      "core",
+      "shoulders"
+    ],
+    "equipment": "kettlebell"
+  },
+  {
+    "slug": "power_clean",
+    "name": "パワークリーン",
+    "nameEn": "Power Clean",
+    "category": "strength_compound",
+    "primaryMuscles": [
+      "glutes",
+      "erector_spinae"
+    ],
+    "secondaryMuscles": [
+      "trapezius",
+      "quadriceps",
+      "core"
+    ],
+    "equipment": "barbell"
+  },
+  {
+    "slug": "hack_squat",
+    "name": "ハックスクワット",
+    "nameEn": "Hack Squat",
+    "category": "strength_compound",
+    "primaryMuscles": [
+      "quadriceps"
+    ],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
+    "equipment": "machine"
+  },
+  {
+    "slug": "lat_pulldown",
+    "name": "ラットプルダウン",
+    "nameEn": "Lat Pulldown",
+    "category": "strength_compound",
+    "primaryMuscles": [
+      "latissimus_dorsi"
+    ],
+    "secondaryMuscles": [
+      "biceps",
+      "rhomboids"
+    ],
+    "equipment": "cable"
+  },
+  {
+    "slug": "seated_cable_row",
+    "name": "シーテッドケーブルロウ",
+    "nameEn": "Seated Cable Row",
+    "category": "strength_compound",
+    "primaryMuscles": [
+      "latissimus_dorsi",
+      "rhomboids"
+    ],
+    "secondaryMuscles": [
+      "biceps",
+      "rear_deltoid"
+    ],
+    "equipment": "cable"
+  },
+  {
+    "slug": "leg_press",
+    "name": "レッグプレス",
+    "nameEn": "Leg Press",
+    "category": "strength_compound",
+    "primaryMuscles": [
+      "quadriceps",
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "hamstrings"
+    ],
+    "equipment": "machine"
+  },
+  {
+    "slug": "smith_machine_squat",
+    "name": "スミスマシンスクワット",
+    "nameEn": "Smith Machine Squat",
+    "category": "strength_compound",
+    "primaryMuscles": [
+      "quadriceps",
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "hamstrings",
+      "core"
+    ],
+    "equipment": "machine"
+  },
+  {
+    "slug": "cable_pullthrough",
+    "name": "ケーブルプルスルー",
+    "nameEn": "Cable Pull-Through",
+    "category": "strength_compound",
+    "primaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
+    "secondaryMuscles": [
+      "erector_spinae"
+    ],
+    "equipment": "cable"
+  },
+  {
+    "slug": "dumbbell_curl",
+    "name": "ダンベルカール",
+    "nameEn": "Dumbbell Curl",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "biceps"
+    ],
+    "secondaryMuscles": [
+      "brachialis"
+    ],
+    "equipment": "dumbbell"
+  },
+  {
+    "slug": "tricep_pushdown",
     "name": "トライセップスプッシュダウン",
     "nameEn": "Tricep Pushdown",
-    "category": "arms",
-    "primaryMuscles": ["triceps"],
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "triceps"
+    ],
     "secondaryMuscles": [],
     "equipment": "cable"
+  },
+  {
+    "slug": "leg_extension",
+    "name": "レッグエクステンション",
+    "nameEn": "Leg Extension",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "quadriceps"
+    ],
+    "secondaryMuscles": [],
+    "equipment": "machine"
+  },
+  {
+    "slug": "leg_curl",
+    "name": "レッグカール",
+    "nameEn": "Leg Curl",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "hamstrings"
+    ],
+    "secondaryMuscles": [],
+    "equipment": "machine"
+  },
+  {
+    "slug": "calf_raise",
+    "name": "カーフレイズ",
+    "nameEn": "Calf Raise",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "calves"
+    ],
+    "secondaryMuscles": [],
+    "equipment": "machine"
+  },
+  {
+    "slug": "seated_calf_raise",
+    "name": "シーテッドカーフレイズ",
+    "nameEn": "Seated Calf Raise",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "calves"
+    ],
+    "secondaryMuscles": [],
+    "equipment": "machine"
+  },
+  {
+    "slug": "lateral_raise",
+    "name": "サイドレイズ",
+    "nameEn": "Lateral Raise",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "deltoid"
+    ],
+    "secondaryMuscles": [
+      "trapezius"
+    ],
+    "equipment": "dumbbell"
+  },
+  {
+    "slug": "front_raise",
+    "name": "フロントレイズ",
+    "nameEn": "Front Raise",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "anterior_deltoid"
+    ],
+    "secondaryMuscles": [
+      "deltoid"
+    ],
+    "equipment": "dumbbell"
+  },
+  {
+    "slug": "rear_delt_fly",
+    "name": "リアデルトフライ",
+    "nameEn": "Rear Delt Fly",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "rear_deltoid"
+    ],
+    "secondaryMuscles": [
+      "rhomboids",
+      "trapezius"
+    ],
+    "equipment": "dumbbell"
+  },
+  {
+    "slug": "pec_deck",
+    "name": "ペックデック",
+    "nameEn": "Pec Deck",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "pectoralis_major"
+    ],
+    "secondaryMuscles": [
+      "pectoralis_minor"
+    ],
+    "equipment": "machine"
+  },
+  {
+    "slug": "cable_fly",
+    "name": "ケーブルフライ",
+    "nameEn": "Cable Fly",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "pectoralis_major"
+    ],
+    "secondaryMuscles": [
+      "anterior_deltoid"
+    ],
+    "equipment": "cable"
+  },
+  {
+    "slug": "dumbbell_fly",
+    "name": "ダンベルフライ",
+    "nameEn": "Dumbbell Fly",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "pectoralis_major"
+    ],
+    "secondaryMuscles": [
+      "pectoralis_minor",
+      "anterior_deltoid"
+    ],
+    "equipment": "dumbbell"
+  },
+  {
+    "slug": "incline_dumbbell_fly",
+    "name": "インクラインダンベルフライ",
+    "nameEn": "Incline Dumbbell Fly",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "pectoralis_major"
+    ],
+    "secondaryMuscles": [
+      "anterior_deltoid"
+    ],
+    "equipment": "dumbbell"
+  },
+  {
+    "slug": "barbell_curl",
+    "name": "バーベルカール",
+    "nameEn": "Barbell Curl",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "biceps"
+    ],
+    "secondaryMuscles": [
+      "brachialis",
+      "forearms"
+    ],
+    "equipment": "barbell"
+  },
+  {
+    "slug": "hammer_curl",
+    "name": "ハンマーカール",
+    "nameEn": "Hammer Curl",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "brachialis"
+    ],
+    "secondaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
+    "equipment": "dumbbell"
+  },
+  {
+    "slug": "concentration_curl",
+    "name": "コンセントレーションカール",
+    "nameEn": "Concentration Curl",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "biceps"
+    ],
+    "secondaryMuscles": [
+      "brachialis"
+    ],
+    "equipment": "dumbbell"
+  },
+  {
+    "slug": "cable_curl",
+    "name": "ケーブルカール",
+    "nameEn": "Cable Curl",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "biceps"
+    ],
+    "secondaryMuscles": [
+      "brachialis"
+    ],
+    "equipment": "cable"
+  },
+  {
+    "slug": "preacher_curl",
+    "name": "プリーチャーカール",
+    "nameEn": "Preacher Curl",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "biceps"
+    ],
+    "secondaryMuscles": [
+      "brachialis"
+    ],
+    "equipment": "machine"
+  },
+  {
+    "slug": "overhead_tricep_extension",
+    "name": "オーバーヘッドトライセップエクステンション",
+    "nameEn": "Overhead Tricep Extension",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "triceps"
+    ],
+    "secondaryMuscles": [],
+    "equipment": "dumbbell"
+  },
+  {
+    "slug": "skull_crusher",
+    "name": "スカルクラッシャー",
+    "nameEn": "Skull Crusher",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "triceps"
+    ],
+    "secondaryMuscles": [],
+    "equipment": "barbell"
+  },
+  {
+    "slug": "cable_overhead_tricep_extension",
+    "name": "ケーブルオーバーヘッドトライセップ",
+    "nameEn": "Cable Overhead Tricep Extension",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "triceps"
+    ],
+    "secondaryMuscles": [],
+    "equipment": "cable"
+  },
+  {
+    "slug": "shrug",
+    "name": "シュラッグ",
+    "nameEn": "Shrug",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "trapezius"
+    ],
+    "secondaryMuscles": [
+      "neck"
+    ],
+    "equipment": "barbell"
+  },
+  {
+    "slug": "dumbbell_shrug",
+    "name": "ダンベルシュラッグ",
+    "nameEn": "Dumbbell Shrug",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "trapezius"
+    ],
+    "secondaryMuscles": [
+      "neck"
+    ],
+    "equipment": "dumbbell"
+  },
+  {
+    "slug": "face_pull",
+    "name": "フェイスプル",
+    "nameEn": "Face Pull",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "rear_deltoid"
+    ],
+    "secondaryMuscles": [
+      "rhomboids",
+      "trapezius"
+    ],
+    "equipment": "cable"
+  },
+  {
+    "slug": "cable_lateral_raise",
+    "name": "ケーブルサイドレイズ",
+    "nameEn": "Cable Lateral Raise",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "deltoid"
+    ],
+    "secondaryMuscles": [
+      "trapezius"
+    ],
+    "equipment": "cable"
+  },
+  {
+    "slug": "wrist_curl",
+    "name": "リストカール",
+    "nameEn": "Wrist Curl",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "forearms"
+    ],
+    "secondaryMuscles": [],
+    "equipment": "barbell"
+  },
+  {
+    "slug": "reverse_wrist_curl",
+    "name": "リバースリストカール",
+    "nameEn": "Reverse Wrist Curl",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "forearms"
+    ],
+    "secondaryMuscles": [
+      "arms"
+    ],
+    "equipment": "barbell"
+  },
+  {
+    "slug": "ab_crunch_machine",
+    "name": "アブクランチマシン",
+    "nameEn": "Ab Crunch Machine",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "rectus_abdominis"
+    ],
+    "secondaryMuscles": [
+      "obliques"
+    ],
+    "equipment": "machine"
+  },
+  {
+    "slug": "cable_crunch",
+    "name": "ケーブルクランチ",
+    "nameEn": "Cable Crunch",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "rectus_abdominis"
+    ],
+    "secondaryMuscles": [
+      "obliques"
+    ],
+    "equipment": "cable"
+  },
+  {
+    "slug": "glute_kickback",
+    "name": "グルートキックバック",
+    "nameEn": "Glute Kickback",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "hamstrings"
+    ],
+    "equipment": "cable"
+  },
+  {
+    "slug": "hip_abduction_machine",
+    "name": "ヒップアブダクションマシン",
+    "nameEn": "Hip Abduction Machine",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "legs"
+    ],
+    "equipment": "machine"
+  },
+  {
+    "slug": "hip_adduction_machine",
+    "name": "ヒップアダクションマシン",
+    "nameEn": "Hip Adduction Machine",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "legs"
+    ],
+    "secondaryMuscles": [
+      "glutes"
+    ],
+    "equipment": "machine"
+  },
+  {
+    "slug": "cable_hip_flexion",
+    "name": "ケーブルヒップフレクション",
+    "nameEn": "Cable Hip Flexion",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "hip_flexors"
+    ],
+    "secondaryMuscles": [
+      "quadriceps"
+    ],
+    "equipment": "cable"
+  },
+  {
+    "slug": "resistance_band_glute_bridge",
+    "name": "バンドグルートブリッジ",
+    "nameEn": "Resistance Band Glute Bridge",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "hamstrings",
+      "core"
+    ],
+    "equipment": "resistance_band"
+  },
+  {
+    "slug": "resistance_band_lateral_walk",
+    "name": "バンドサイドウォーク",
+    "nameEn": "Resistance Band Lateral Walk",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "legs"
+    ],
+    "equipment": "resistance_band"
+  },
+  {
+    "slug": "resistance_band_curl",
+    "name": "バンドカール",
+    "nameEn": "Resistance Band Curl",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "biceps"
+    ],
+    "secondaryMuscles": [
+      "brachialis"
+    ],
+    "equipment": "resistance_band"
+  },
+  {
+    "slug": "resistance_band_tricep_pushdown",
+    "name": "バンドトライセップスプッシュダウン",
+    "nameEn": "Resistance Band Tricep Pushdown",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "triceps"
+    ],
+    "secondaryMuscles": [],
+    "equipment": "resistance_band"
+  },
+  {
+    "slug": "decline_bench_press",
+    "name": "デクラインベンチプレス",
+    "nameEn": "Decline Bench Press",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "pectoralis_major"
+    ],
+    "secondaryMuscles": [
+      "triceps",
+      "pectoralis_minor"
+    ],
+    "equipment": "barbell"
+  },
+  {
+    "slug": "reverse_fly",
+    "name": "リバースフライ",
+    "nameEn": "Reverse Fly",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "rear_deltoid"
+    ],
+    "secondaryMuscles": [
+      "rhomboids"
+    ],
+    "equipment": "dumbbell"
+  },
+  {
+    "slug": "incline_curl",
+    "name": "インクラインカール",
+    "nameEn": "Incline Curl",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "biceps"
+    ],
+    "secondaryMuscles": [
+      "brachialis"
+    ],
+    "equipment": "dumbbell"
+  },
+  {
+    "slug": "seated_leg_curl",
+    "name": "シーテッドレッグカール",
+    "nameEn": "Seated Leg Curl",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "hamstrings"
+    ],
+    "secondaryMuscles": [
+      "calves"
+    ],
+    "equipment": "machine"
+  },
+  {
+    "slug": "cable_chest_fly",
+    "name": "ケーブルチェストフライ",
+    "nameEn": "Cable Chest Fly",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "pectoralis_major"
+    ],
+    "secondaryMuscles": [
+      "pectoralis_minor"
+    ],
+    "equipment": "cable"
+  },
+  {
+    "slug": "straight_arm_pulldown",
+    "name": "ストレートアームプルダウン",
+    "nameEn": "Straight Arm Pulldown",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "latissimus_dorsi"
+    ],
+    "secondaryMuscles": [
+      "triceps",
+      "core"
+    ],
+    "equipment": "cable"
+  },
+  {
+    "slug": "back_extension",
+    "name": "バックエクステンション",
+    "nameEn": "Back Extension",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "erector_spinae"
+    ],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
+    "equipment": "machine"
+  },
+  {
+    "slug": "t_bar_row",
+    "name": "Tバーロウ",
+    "nameEn": "T-Bar Row",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "latissimus_dorsi",
+      "rhomboids"
+    ],
+    "secondaryMuscles": [
+      "biceps",
+      "erector_spinae"
+    ],
+    "equipment": "barbell"
+  },
+  {
+    "slug": "chest_press_machine",
+    "name": "チェストプレスマシン",
+    "nameEn": "Chest Press Machine",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "pectoralis_major"
+    ],
+    "secondaryMuscles": [
+      "triceps",
+      "anterior_deltoid"
+    ],
+    "equipment": "machine"
+  },
+  {
+    "slug": "shoulder_press_machine",
+    "name": "ショルダープレスマシン",
+    "nameEn": "Shoulder Press Machine",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "deltoid"
+    ],
+    "secondaryMuscles": [
+      "triceps",
+      "trapezius"
+    ],
+    "equipment": "machine"
+  },
+  {
+    "slug": "push_up",
+    "name": "腕立て伏せ",
+    "nameEn": "Push-up",
+    "category": "calisthenics",
+    "primaryMuscles": [
+      "pectoralis_major"
+    ],
+    "secondaryMuscles": [
+      "triceps",
+      "anterior_deltoid",
+      "core"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "pull_up",
+    "name": "懸垂",
+    "nameEn": "Pull-up",
+    "category": "calisthenics",
+    "primaryMuscles": [
+      "latissimus_dorsi"
+    ],
+    "secondaryMuscles": [
+      "biceps",
+      "core"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "chin_up",
+    "name": "チンアップ",
+    "nameEn": "Chin-up",
+    "category": "calisthenics",
+    "primaryMuscles": [
+      "latissimus_dorsi",
+      "biceps"
+    ],
+    "secondaryMuscles": [
+      "core",
+      "rhomboids"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "dip",
+    "name": "ディップス",
+    "nameEn": "Dip",
+    "category": "calisthenics",
+    "primaryMuscles": [
+      "triceps",
+      "pectoralis_major"
+    ],
+    "secondaryMuscles": [
+      "anterior_deltoid"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "bodyweight_squat",
+    "name": "自重スクワット",
+    "nameEn": "Bodyweight Squat",
+    "category": "calisthenics",
+    "primaryMuscles": [
+      "quadriceps",
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "hamstrings",
+      "core"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "bodyweight_lunge",
+    "name": "自重ランジ",
+    "nameEn": "Bodyweight Lunge",
+    "category": "calisthenics",
+    "primaryMuscles": [
+      "quadriceps",
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "hamstrings",
+      "core"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "plank",
+    "name": "プランク",
+    "nameEn": "Plank",
+    "category": "calisthenics",
+    "primaryMuscles": [
+      "core"
+    ],
+    "secondaryMuscles": [
+      "transverse_abdominis",
+      "shoulders"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "side_plank",
+    "name": "サイドプランク",
+    "nameEn": "Side Plank",
+    "category": "calisthenics",
+    "primaryMuscles": [
+      "obliques"
+    ],
+    "secondaryMuscles": [
+      "core",
+      "transverse_abdominis"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "crunch",
+    "name": "クランチ",
+    "nameEn": "Crunch",
+    "category": "calisthenics",
+    "primaryMuscles": [
+      "rectus_abdominis"
+    ],
+    "secondaryMuscles": [
+      "obliques"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "glute_bridge",
+    "name": "グルートブリッジ",
+    "nameEn": "Glute Bridge",
+    "category": "calisthenics",
+    "primaryMuscles": [
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "hamstrings",
+      "core"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "single_leg_glute_bridge",
+    "name": "シングルレッググルートブリッジ",
+    "nameEn": "Single Leg Glute Bridge",
+    "category": "calisthenics",
+    "primaryMuscles": [
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "hamstrings",
+      "core"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "mountain_climber",
+    "name": "マウンテンクライマー",
+    "nameEn": "Mountain Climber",
+    "category": "calisthenics",
+    "primaryMuscles": [
+      "core"
+    ],
+    "secondaryMuscles": [
+      "hip_flexors",
+      "shoulders"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "burpee",
+    "name": "バーピー",
+    "nameEn": "Burpee",
+    "category": "calisthenics",
+    "primaryMuscles": [
+      "legs"
+    ],
+    "secondaryMuscles": [
+      "core",
+      "chest",
+      "shoulders"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "inverted_row",
+    "name": "インバーテッドロウ",
+    "nameEn": "Inverted Row",
+    "category": "calisthenics",
+    "primaryMuscles": [
+      "latissimus_dorsi",
+      "rhomboids"
+    ],
+    "secondaryMuscles": [
+      "biceps",
+      "rear_deltoid"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "pistol_squat",
+    "name": "ピストルスクワット",
+    "nameEn": "Pistol Squat",
+    "category": "calisthenics",
+    "primaryMuscles": [
+      "quadriceps"
+    ],
+    "secondaryMuscles": [
+      "glutes",
+      "core",
+      "calves"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "v_up",
+    "name": "Vアップ",
+    "nameEn": "V-Up",
+    "category": "calisthenics",
+    "primaryMuscles": [
+      "rectus_abdominis"
+    ],
+    "secondaryMuscles": [
+      "hip_flexors",
+      "core"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "tricep_dip",
+    "name": "トライセップスディップ",
+    "nameEn": "Tricep Dip",
+    "category": "calisthenics",
+    "primaryMuscles": [
+      "triceps"
+    ],
+    "secondaryMuscles": [
+      "pectoralis_minor",
+      "anterior_deltoid"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "superman",
+    "name": "スーパーマン",
+    "nameEn": "Superman",
+    "category": "calisthenics",
+    "primaryMuscles": [
+      "erector_spinae"
+    ],
+    "secondaryMuscles": [
+      "glutes",
+      "back"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "bird_dog",
+    "name": "バードドッグ",
+    "nameEn": "Bird Dog",
+    "category": "calisthenics",
+    "primaryMuscles": [
+      "erector_spinae",
+      "core"
+    ],
+    "secondaryMuscles": [
+      "glutes",
+      "transverse_abdominis"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "diamond_push_up",
+    "name": "ダイアモンド腕立て",
+    "nameEn": "Diamond Push-up",
+    "category": "calisthenics",
+    "primaryMuscles": [
+      "triceps"
+    ],
+    "secondaryMuscles": [
+      "pectoralis_major",
+      "anterior_deltoid"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "wide_push_up",
+    "name": "ワイド腕立て",
+    "nameEn": "Wide Push-up",
+    "category": "calisthenics",
+    "primaryMuscles": [
+      "pectoralis_major"
+    ],
+    "secondaryMuscles": [
+      "triceps",
+      "anterior_deltoid"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "hollow_body_hold",
+    "name": "ホロウボディホールド",
+    "nameEn": "Hollow Body Hold",
+    "category": "calisthenics",
+    "primaryMuscles": [
+      "core"
+    ],
+    "secondaryMuscles": [
+      "transverse_abdominis",
+      "rectus_abdominis"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "quad_stretch",
+    "name": "大腿四頭筋ストレッチ",
+    "nameEn": "Quad Stretch",
+    "category": "stretching",
+    "primaryMuscles": [
+      "quadriceps"
+    ],
+    "secondaryMuscles": [
+      "hip_flexors"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "hamstring_stretch",
+    "name": "ハムストリングスストレッチ",
+    "nameEn": "Hamstring Stretch",
+    "category": "stretching",
+    "primaryMuscles": [
+      "hamstrings"
+    ],
+    "secondaryMuscles": [
+      "glutes",
+      "erector_spinae"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "hip_flexor_stretch",
+    "name": "ヒップフレクサーストレッチ",
+    "nameEn": "Hip Flexor Stretch",
+    "category": "stretching",
+    "primaryMuscles": [
+      "hip_flexors"
+    ],
+    "secondaryMuscles": [
+      "quadriceps"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "glute_stretch",
+    "name": "臀部ストレッチ",
+    "nameEn": "Glute Stretch",
+    "category": "stretching",
+    "primaryMuscles": [
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "hamstrings",
+      "hip_flexors"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "calf_stretch",
+    "name": "ふくらはぎストレッチ",
+    "nameEn": "Calf Stretch",
+    "category": "stretching",
+    "primaryMuscles": [
+      "calves"
+    ],
+    "secondaryMuscles": [],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "chest_stretch",
+    "name": "胸部ストレッチ",
+    "nameEn": "Chest Stretch",
+    "category": "stretching",
+    "primaryMuscles": [
+      "chest"
+    ],
+    "secondaryMuscles": [
+      "anterior_deltoid",
+      "pectoralis_minor"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "lat_stretch",
+    "name": "広背筋ストレッチ",
+    "nameEn": "Lat Stretch",
+    "category": "stretching",
+    "primaryMuscles": [
+      "latissimus_dorsi"
+    ],
+    "secondaryMuscles": [
+      "back"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "shoulder_stretch",
+    "name": "肩ストレッチ",
+    "nameEn": "Shoulder Stretch",
+    "category": "stretching",
+    "primaryMuscles": [
+      "shoulders"
+    ],
+    "secondaryMuscles": [
+      "deltoid",
+      "rear_deltoid"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "tricep_stretch",
+    "name": "上腕三頭筋ストレッチ",
+    "nameEn": "Tricep Stretch",
+    "category": "stretching",
+    "primaryMuscles": [
+      "triceps"
+    ],
+    "secondaryMuscles": [
+      "arms"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "bicep_stretch",
+    "name": "上腕二頭筋ストレッチ",
+    "nameEn": "Bicep Stretch",
+    "category": "stretching",
+    "primaryMuscles": [
+      "biceps"
+    ],
+    "secondaryMuscles": [
+      "forearms"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "neck_stretch",
+    "name": "首ストレッチ",
+    "nameEn": "Neck Stretch",
+    "category": "stretching",
+    "primaryMuscles": [
+      "neck"
+    ],
+    "secondaryMuscles": [
+      "trapezius"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "upper_back_stretch",
+    "name": "上背部ストレッチ",
+    "nameEn": "Upper Back Stretch",
+    "category": "stretching",
+    "primaryMuscles": [
+      "rhomboids"
+    ],
+    "secondaryMuscles": [
+      "trapezius",
+      "back"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "lower_back_stretch",
+    "name": "腰部ストレッチ",
+    "nameEn": "Lower Back Stretch",
+    "category": "stretching",
+    "primaryMuscles": [
+      "erector_spinae"
+    ],
+    "secondaryMuscles": [
+      "glutes"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "pigeon_pose",
+    "name": "ピジョンポーズ",
+    "nameEn": "Pigeon Pose",
+    "category": "stretching",
+    "primaryMuscles": [
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "hip_flexors",
+      "legs"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "butterfly_stretch",
+    "name": "バタフライストレッチ",
+    "nameEn": "Butterfly Stretch",
+    "category": "stretching",
+    "primaryMuscles": [
+      "legs"
+    ],
+    "secondaryMuscles": [
+      "glutes",
+      "hip_flexors"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "seated_forward_bend",
+    "name": "座位前屈",
+    "nameEn": "Seated Forward Bend",
+    "category": "stretching",
+    "primaryMuscles": [
+      "hamstrings"
+    ],
+    "secondaryMuscles": [
+      "erector_spinae",
+      "calves"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "standing_forward_fold",
+    "name": "立位前屈",
+    "nameEn": "Standing Forward Fold",
+    "category": "stretching",
+    "primaryMuscles": [
+      "hamstrings"
+    ],
+    "secondaryMuscles": [
+      "erector_spinae",
+      "calves"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "child_pose",
+    "name": "チャイルドポーズ",
+    "nameEn": "Child's Pose",
+    "category": "stretching",
+    "primaryMuscles": [
+      "erector_spinae"
+    ],
+    "secondaryMuscles": [
+      "glutes",
+      "latissimus_dorsi"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "spinal_twist",
+    "name": "脊椎ツイスト",
+    "nameEn": "Spinal Twist",
+    "category": "stretching",
+    "primaryMuscles": [
+      "obliques"
+    ],
+    "secondaryMuscles": [
+      "erector_spinae",
+      "glutes"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "doorway_chest_stretch",
+    "name": "ドアウェイ胸部ストレッチ",
+    "nameEn": "Doorway Chest Stretch",
+    "category": "stretching",
+    "primaryMuscles": [
+      "pectoralis_major"
+    ],
+    "secondaryMuscles": [
+      "anterior_deltoid"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "foam_roll_quads",
+    "name": "フォームロール大腿四頭筋",
+    "nameEn": "Foam Roll Quads",
+    "category": "stretching",
+    "primaryMuscles": [
+      "quadriceps"
+    ],
+    "secondaryMuscles": [
+      "legs"
+    ],
+    "equipment": "foam_roller"
+  },
+  {
+    "slug": "foam_roll_hamstrings",
+    "name": "フォームロールハムストリングス",
+    "nameEn": "Foam Roll Hamstrings",
+    "category": "stretching",
+    "primaryMuscles": [
+      "hamstrings"
+    ],
+    "secondaryMuscles": [
+      "glutes"
+    ],
+    "equipment": "foam_roller"
+  },
+  {
+    "slug": "foam_roll_it_band",
+    "name": "フォームロールITバンド",
+    "nameEn": "Foam Roll IT Band",
+    "category": "stretching",
+    "primaryMuscles": [
+      "legs"
+    ],
+    "secondaryMuscles": [
+      "quadriceps"
+    ],
+    "equipment": "foam_roller"
+  },
+  {
+    "slug": "foam_roll_upper_back",
+    "name": "フォームロール上背部",
+    "nameEn": "Foam Roll Upper Back",
+    "category": "stretching",
+    "primaryMuscles": [
+      "rhomboids"
+    ],
+    "secondaryMuscles": [
+      "trapezius",
+      "erector_spinae"
+    ],
+    "equipment": "foam_roller"
+  },
+  {
+    "slug": "foam_roll_calves",
+    "name": "フォームロールふくらはぎ",
+    "nameEn": "Foam Roll Calves",
+    "category": "stretching",
+    "primaryMuscles": [
+      "calves"
+    ],
+    "secondaryMuscles": [],
+    "equipment": "foam_roller"
+  },
+  {
+    "slug": "foam_roll_lats",
+    "name": "フォームロール広背筋",
+    "nameEn": "Foam Roll Lats",
+    "category": "stretching",
+    "primaryMuscles": [
+      "latissimus_dorsi"
+    ],
+    "secondaryMuscles": [
+      "back"
+    ],
+    "equipment": "foam_roller"
+  },
+  {
+    "slug": "hip_90_90_stretch",
+    "name": "ヒップ90-90ストレッチ",
+    "nameEn": "Hip 90/90 Stretch",
+    "category": "stretching",
+    "primaryMuscles": [
+      "hip_flexors"
+    ],
+    "secondaryMuscles": [
+      "glutes"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "world_greatest_stretch",
+    "name": "ワールドグレイテストストレッチ",
+    "nameEn": "World's Greatest Stretch",
+    "category": "stretching",
+    "primaryMuscles": [
+      "hip_flexors"
+    ],
+    "secondaryMuscles": [
+      "glutes",
+      "chest",
+      "core",
+      "hamstrings"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "ankle_mobility",
+    "name": "足首モビリティ",
+    "nameEn": "Ankle Mobility",
+    "category": "stretching",
+    "primaryMuscles": [
+      "calves"
+    ],
+    "secondaryMuscles": [
+      "legs"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "forearm_stretch",
+    "name": "前腕ストレッチ",
+    "nameEn": "Forearm Stretch",
+    "category": "stretching",
+    "primaryMuscles": [
+      "forearms"
+    ],
+    "secondaryMuscles": [
+      "arms"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "treadmill_run",
+    "name": "トレッドミルランニング",
+    "nameEn": "Treadmill Run",
+    "category": "cardio",
+    "primaryMuscles": [
+      "legs"
+    ],
+    "secondaryMuscles": [
+      "core",
+      "calves"
+    ],
+    "equipment": "machine"
+  },
+  {
+    "slug": "stationary_bike",
+    "name": "エアロバイク",
+    "nameEn": "Stationary Bike",
+    "category": "cardio",
+    "primaryMuscles": [
+      "quadriceps"
+    ],
+    "secondaryMuscles": [
+      "hamstrings",
+      "calves",
+      "glutes"
+    ],
+    "equipment": "machine"
+  },
+  {
+    "slug": "rowing_machine",
+    "name": "ローイングマシン",
+    "nameEn": "Rowing Machine",
+    "category": "cardio",
+    "primaryMuscles": [
+      "back"
+    ],
+    "secondaryMuscles": [
+      "core",
+      "arms",
+      "legs"
+    ],
+    "equipment": "machine"
+  },
+  {
+    "slug": "elliptical_trainer",
+    "name": "エリプティカルトレーナー",
+    "nameEn": "Elliptical Trainer",
+    "category": "cardio",
+    "primaryMuscles": [
+      "legs"
+    ],
+    "secondaryMuscles": [
+      "glutes",
+      "core",
+      "arms"
+    ],
+    "equipment": "machine"
+  },
+  {
+    "slug": "jump_rope",
+    "name": "縄跳び",
+    "nameEn": "Jump Rope",
+    "category": "cardio",
+    "primaryMuscles": [
+      "calves"
+    ],
+    "secondaryMuscles": [
+      "legs",
+      "shoulders",
+      "core"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "box_jump",
+    "name": "ボックスジャンプ",
+    "nameEn": "Box Jump",
+    "category": "cardio",
+    "primaryMuscles": [
+      "quadriceps",
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "calves",
+      "core"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "battle_rope",
+    "name": "バトルロープ",
+    "nameEn": "Battle Rope",
+    "category": "cardio",
+    "primaryMuscles": [
+      "shoulders"
+    ],
+    "secondaryMuscles": [
+      "core",
+      "arms",
+      "back"
+    ],
+    "equipment": "bodyweight"
+  },
+  {
+    "slug": "stair_climber",
+    "name": "ステアクライマー",
+    "nameEn": "Stair Climber",
+    "category": "cardio",
+    "primaryMuscles": [
+      "quadriceps",
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "calves",
+      "hamstrings"
+    ],
+    "equipment": "machine"
+  },
+  {
+    "slug": "kettlebell_snatch",
+    "name": "ケトルベルスナッチ",
+    "nameEn": "Kettlebell Snatch",
+    "category": "cardio",
+    "primaryMuscles": [
+      "glutes",
+      "shoulders"
+    ],
+    "secondaryMuscles": [
+      "core",
+      "back",
+      "legs"
+    ],
+    "equipment": "kettlebell"
+  },
+  {
+    "slug": "sled_push",
+    "name": "スレッドプッシュ",
+    "nameEn": "Sled Push",
+    "category": "cardio",
+    "primaryMuscles": [
+      "quadriceps"
+    ],
+    "secondaryMuscles": [
+      "glutes",
+      "core",
+      "chest"
+    ],
+    "equipment": "machine"
+  },
+  {
+    "slug": "cable_row",
+    "name": "ケーブルロウ",
+    "nameEn": "Cable Row",
+    "category": "strength_compound",
+    "primaryMuscles": [
+      "latissimus_dorsi",
+      "rhomboids"
+    ],
+    "secondaryMuscles": [
+      "biceps",
+      "rear_deltoid"
+    ],
+    "equipment": "cable"
+  },
+  {
+    "slug": "trap_bar_deadlift",
+    "name": "トラップバーデッドリフト",
+    "nameEn": "Trap Bar Deadlift",
+    "category": "strength_compound",
+    "primaryMuscles": [
+      "glutes",
+      "quadriceps"
+    ],
+    "secondaryMuscles": [
+      "hamstrings",
+      "erector_spinae",
+      "trapezius"
+    ],
+    "equipment": "barbell"
+  },
+  {
+    "slug": "dumbbell_lunge",
+    "name": "ダンベルランジ",
+    "nameEn": "Dumbbell Lunge",
+    "category": "strength_compound",
+    "primaryMuscles": [
+      "quadriceps",
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "hamstrings",
+      "core"
+    ],
+    "equipment": "dumbbell"
+  },
+  {
+    "slug": "pendlay_row",
+    "name": "ペンドレイロウ",
+    "nameEn": "Pendlay Row",
+    "category": "strength_compound",
+    "primaryMuscles": [
+      "latissimus_dorsi",
+      "rhomboids"
+    ],
+    "secondaryMuscles": [
+      "biceps",
+      "rear_deltoid",
+      "erector_spinae"
+    ],
+    "equipment": "barbell"
+  },
+  {
+    "slug": "dumbbell_wrist_curl",
+    "name": "ダンベルリストカール",
+    "nameEn": "Dumbbell Wrist Curl",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "forearms"
+    ],
+    "secondaryMuscles": [
+      "arms"
+    ],
+    "equipment": "dumbbell"
+  },
+  {
+    "slug": "zercher_squat",
+    "name": "ザーチャースクワット",
+    "nameEn": "Zercher Squat",
+    "category": "strength_compound",
+    "primaryMuscles": [
+      "quadriceps",
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "core",
+      "biceps",
+      "erector_spinae"
+    ],
+    "equipment": "barbell"
+  },
+  {
+    "slug": "cable_tricep_kickback",
+    "name": "ケーブルトライセップスキックバック",
+    "nameEn": "Cable Tricep Kickback",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "triceps"
+    ],
+    "secondaryMuscles": [],
+    "equipment": "cable"
+  },
+  {
+    "slug": "reverse_curl",
+    "name": "リバースカール",
+    "nameEn": "Reverse Curl",
+    "category": "strength_isolation",
+    "primaryMuscles": [
+      "brachialis",
+      "forearms"
+    ],
+    "secondaryMuscles": [
+      "biceps"
+    ],
+    "equipment": "barbell"
+  },
+  {
+    "slug": "push_press",
+    "name": "プッシュプレス",
+    "nameEn": "Push Press",
+    "category": "strength_compound",
+    "primaryMuscles": [
+      "deltoid"
+    ],
+    "secondaryMuscles": [
+      "triceps",
+      "glutes",
+      "quadriceps",
+      "core"
+    ],
+    "equipment": "barbell"
   }
 ]
